@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/images/LOGO CAJA.png';
+
+const links = [
+  { text: "Bóveda", href: "#boveda" },
+  { text: "Presupuestos", href: "#presupuestos" },
+  { text: "Metas", href: "#metas" },
+  { text: "FINNO", href: "#finno" },
+];
+---
+
+<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex-shrink-0 flex items-center">
+        <a href="#" class="flex items-center gap-2">
+          <Image src={logoImage} alt="Tu Caja Logo" class="h-10 w-auto" />
+          <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Tu Caja
+          </span>
+        </a>
+      </div>
+      <div class="hidden md:flex space-x-8 items-center">
+        {links.map((link) => (
+          <a href={link.href} class="text-gray-600 hover:text-primary transition-colors font-medium">
+            {link.text}
+          </a>
+        ))}
+        <a href="#" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition font-medium text-sm">
+          Descargar App
+        </a>
+      </div>
+      <div class="md:hidden">
+        <!-- Mobile menu button can go here -->
+      </div>
+    </div>
+  </div>
+</nav>

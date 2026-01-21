@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/images/LOGO CAJA.png';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-slate-50 border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid md:grid-cols-4 gap-8 text-center md:text-left">
+      <div class="col-span-1 md:col-span-2">
+        <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+          <Image src={logoImage} alt="Tu Caja Logo" class="h-10 w-auto" />
+          <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Tu Caja
+          </span>
+        </div>
+        <p class="text-gray-500 max-w-sm mx-auto md:mx-0">
+          La plataforma integral para gestionar tus finanzas personales, cumplir tus metas y asegurar tu futuro.
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="font-bold text-slate-900 mb-4">Sobre tu caja</h4>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li><a href="#boveda" class="hover:text-primary">Bóveda</a></li>
+          <li><a href="#presupuestos" class="hover:text-primary">Presupuestos</a></li>
+          <li><a href="#metas" class="hover:text-primary">Metas</a></li>
+          <li><a href="#finno" class="hover:text-primary">FINNO AI</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="mt-12 pt-8 border-t border-slate-200 text-center text-sm text-gray-500">
+      <p>&copy; {currentYear} Tu Caja App. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
