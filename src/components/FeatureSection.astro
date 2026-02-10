@@ -16,7 +16,7 @@ const { title, description, imageSrc, imageAlt = "", reversed = false, id } = As
 
 <section id={id} class={`py-20 px-4 sm:px-6 lg:px-8 ${reversed ? 'bg-slate-50' : 'bg-white'}`}>
   <div class="max-w-7xl mx-auto flex flex-col items-center gap-12 lg:gap-24" class:list={[reversed ? 'lg:flex-row-reverse' : 'lg:flex-row']}>
-    <div class="flex-1 space-y-6 text-center lg:text-left">
+    <div class="flex-1 space-y-6 text-center lg:text-left reveal">
       <h2 class="text-3xl md:text-4xl font-bold text-slate-900">{title}</h2>
       <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
         {description}
@@ -24,7 +24,7 @@ const { title, description, imageSrc, imageAlt = "", reversed = false, id } = As
       <slot name="extra" />
     </div>
     
-    <div class="flex-1 w-full max-w-md lg:max-w-xl flex justify-center">
+    <div class="flex-1 w-full max-w-md lg:max-w-xl flex justify-center reveal-scale delay-200">
         <!-- Phone Mockup Frame -->
         <div class="relative bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl border-4 border-gray-800 w-64 md:w-72 lg:w-80">
             <!-- Screen Content -->
