@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
-import logoImage from '../assets/images/LOGO CAJA.png';
+import { Image } from "astro:assets";
+import logoImage from "../assets/images/LOGO CAJA.png";
 
 const links = [
   { text: "Bóveda", href: "#boveda" },
@@ -10,35 +10,49 @@ const links = [
 ];
 ---
 
-<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+<nav
+  class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100"
+>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex-shrink-0 flex items-center">
         <a href="#" class="flex items-center gap-2">
           <Image src={logoImage} alt="Tu Caja Logo" class="h-10 w-auto" />
-          <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <span
+            class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+          >
             Tu Caja
           </span>
         </a>
       </div>
       <div class="hidden md:flex space-x-8 items-center">
-        {links.map((link) => (
-          <a href={link.href} class="text-gray-600 hover:text-primary transition-colors font-medium">
-            {link.text}
-          </a>
-        ))}
-        <a 
-          href="https://t.me/+UeNBzD5prKNhYmMx" 
-          target="_blank" 
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="text-gray-600 hover:text-primary transition-colors font-medium"
+            >
+              {link.text}
+            </a>
+          ))
+        }
+        <a
+          href="https://t.me/+UeNBzD5prKNhYmMx"
+          target="_blank"
           rel="noopener noreferrer"
           class="text-primary hover:text-accent transition-colors"
           title="Únete a nuestro grupo de Telegram"
         >
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.68c.223-.198-.054-.308-.346-.11l-6.4 4.03-2.76-.918c-.6-.187-.612-.6.125-.89l10.782-4.156c.5-.18.943.112.78.89z"/>
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.68c.223-.198-.054-.308-.346-.11l-6.4 4.03-2.76-.918c-.6-.187-.612-.6.125-.89l10.782-4.156c.5-.18.943.112.78.89z"
+            ></path>
           </svg>
         </a>
-        <a href="#" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition font-medium text-sm">
+        <a
+          href="#"
+          class="bg-primary text-white px-4 py-2 rounded-full hover:bg-secondary transition font-medium text-sm"
+        >
           Descargar App
         </a>
       </div>

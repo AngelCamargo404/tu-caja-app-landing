@@ -1,63 +1,63 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import FeatureSection from '../components/FeatureSection.astro';
-import FinnoAI from '../components/FinnoAI.astro';
-import CommunitySection from '../components/CommunitySection.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import FeatureSection from "../components/FeatureSection.astro";
+import FinnoAI from "../components/FinnoAI.astro";
+import CommunitySection from "../components/CommunitySection.astro";
+import Footer from "../components/Footer.astro";
 
 // Import images
-import bovedaImage from '../assets/images/boveda-seguridad.png';
-import presupuestosImage from '../assets/images/apartado-presupuestos.png';
-import metasImage from '../assets/images/Lista-deseos.png';
-import estadisticasImage from '../assets/images/Captura1.png';
+import bovedaImage from "../assets/images/boveda-seguridad.png";
+import presupuestosImage from "../assets/images/apartado-presupuestos.png";
+import metasImage from "../assets/images/Lista-deseos.png";
+import estadisticasImage from "../assets/images/Captura1.png";
 ---
 
 <Layout title="Tu Caja App - Finanzas Personales Inteligentes">
-	<Navbar />
-	
-	<main>
-		<Hero />
-		
-		<FeatureSection
-			id="boveda"
-			title="Bóveda de Seguridad"
-			description="Guarda tus contraseñas y documentos importantes con encriptación de grado militar. Tu seguridad es nuestra prioridad, mantén tus claves bancarias y personales en un solo lugar seguro."
-			imageSrc={bovedaImage}
-			imageAlt="Bóveda segura digital"
-		/>
+  <Navbar />
 
-		<FeatureSection
-			id="presupuestos"
-			title="Presupuestos Inteligentes"
-			description="Crea presupuestos detallados para cada categoría de gasto. Divide tus fondos antes de usarlos y asegúrate de que cada centavo tenga un propósito. Recibe alertas cuando estés cerca de alcanzar tu límite."
-			imageSrc={presupuestosImage}
-			imageAlt="Gestión de presupuestos"
-			reversed={true}
-		/>
+  <main>
+    <Hero />
 
-		<FeatureSection
-			id="metas"
-			title="Lista de Deseos y Metas"
-			description="Visualiza tus sueños y alcánzalos. Crea una lista de deseos, establece metas de ahorro y monitorea tu progreso. Ya sea un viaje, un auto nuevo o tu fondo de retiro, te ayudamos a llegar ahí."
-			imageSrc={metasImage}
-			imageAlt="Lista de metas financieras"
-		/>
+    <FeatureSection
+      id="boveda"
+      title="Bóveda de Seguridad"
+      description="Guarda tus contraseñas y documentos importantes con encriptación de grado militar. Tu seguridad es nuestra prioridad, mantén tus claves bancarias y personales en un solo lugar seguro."
+      imageSrc={bovedaImage}
+      imageAlt="Bóveda segura digital"
+    />
 
-		<FeatureSection
-			id="estadisticas"
-			title="Estadísticas Detalladas"
-			description="Entiende a dónde va tu dinero con gráficas interactivas y reportes detallados. Visualiza tus gastos por categoría, periodo o método de pago para tomar decisiones informadas."
-			imageSrc={estadisticasImage}
-			imageAlt="Gráficas de estadísticas financieras"
-			reversed={true}
-		/>
+    <FeatureSection
+      id="presupuestos"
+      title="Presupuestos Inteligentes"
+      description="Crea presupuestos detallados para cada categoría de gasto. Divide tus fondos antes de usarlos y asegúrate de que cada centavo tenga un propósito. Recibe alertas cuando estés cerca de alcanzar tu límite."
+      imageSrc={presupuestosImage}
+      imageAlt="Gestión de presupuestos"
+      reversed={true}
+    />
 
-		<FinnoAI />
+    <FeatureSection
+      id="metas"
+      title="Lista de Deseos y Metas"
+      description="Visualiza tus sueños y alcánzalos. Crea una lista de deseos, establece metas de ahorro y monitorea tu progreso. Ya sea un viaje, un auto nuevo o tu fondo de retiro, te ayudamos a llegar ahí."
+      imageSrc={metasImage}
+      imageAlt="Lista de metas financieras"
+    />
 
-		<CommunitySection />
-	</main>
+    <FeatureSection
+      id="estadisticas"
+      title="Estadísticas Detalladas"
+      description="Entiende a dónde va tu dinero con gráficas interactivas y reportes detallados. Visualiza tus gastos por categoría, periodo o método de pago para tomar decisiones informadas."
+      imageSrc={estadisticasImage}
+      imageAlt="Gráficas de estadísticas financieras"
+      reversed={true}
+    />
 
-	<Footer />
+    <FinnoAI />
+
+    <CommunitySection />
+  </main>
+
+  <Footer />
 </Layout>
