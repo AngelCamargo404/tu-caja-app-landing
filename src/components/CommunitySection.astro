@@ -3,10 +3,28 @@
 const telegramGroupUrl = "https://t.me/+UeNBzD5prKNhYmMx";
 ---
 
-<section id="comunidad" class="py-20 bg-gradient-to-r from-primary to-accent">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<section
+  id="comunidad"
+  class="relative py-24 overflow-hidden bg-gradient-to-r from-primary via-accent to-secondary bg-[length:200%_200%] animate-gradient-x"
+>
+  <!-- Decorative shapes -->
+  <div
+    class="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-float-slow pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute bottom-10 right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-float-slower pointer-events-none"
+  >
+  </div>
+
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <div class="flex justify-center mb-6">
-      <div class="bg-white/20 backdrop-blur-md rounded-full p-6 reveal-scale">
+      <div
+        class="relative bg-white/20 backdrop-blur-md rounded-full p-6 reveal-scale"
+      >
+        <span
+          class="absolute inset-0 rounded-full bg-white/30 animate-pulse-ring"
+          aria-hidden="true"></span>
         <svg
           class="w-16 h-16 text-white"
           fill="currentColor"
@@ -32,7 +50,7 @@ const telegramGroupUrl = "https://t.me/+UeNBzD5prKNhYmMx";
       href={telegramGroupUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-lg reveal delay-200"
+      class="inline-flex items-center gap-3 bg-white text-primary-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-50 transition-all hover:scale-105 hover:-translate-y-0.5 shadow-xl reveal delay-200"
     >
       <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
         <path

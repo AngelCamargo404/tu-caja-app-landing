@@ -9,6 +9,7 @@ interface Props {
   imageAlt?: string;
   reversed?: boolean;
   id?: string;
+  eyebrow?: string;
 }
 
 const {
@@ -18,19 +19,51 @@ const {
   imageAlt = "",
   reversed = false,
   id,
+  eyebrow,
 } = Astro.props;
 ---
 
 <section
   id={id}
-  class={`py-20 px-4 sm:px-6 lg:px-8 ${reversed ? "bg-slate-50" : "bg-white"}`}
+  class:list={[
+    "relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden",
+    reversed ? "bg-slate-50" : "bg-white",
+  ]}
 >
+  <!-- Soft brand accent -->
   <div
-    class="max-w-7xl mx-auto flex flex-col items-center gap-12 lg:gap-24"
+    class:list={[
+      "absolute pointer-events-none blur-3xl opacity-40 rounded-full",
+      reversed
+        ? "bg-accent/30 w-96 h-96 -top-24 -right-24"
+        : "bg-primary/30 w-96 h-96 -bottom-24 -left-24",
+    ]}
+  >
+  </div>
+
+  <div
+    class="relative max-w-7xl mx-auto flex flex-col items-center gap-12 lg:gap-24"
     class:list={[reversed ? "lg:flex-row-reverse" : "lg:flex-row"]}
   >
-    <div class="flex-1 space-y-6 text-center lg:text-left reveal">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900">{title}</h2>
+    <div
+      class:list={[
+        "flex-1 space-y-6 text-center lg:text-left",
+        reversed ? "reveal-right" : "reveal-left",
+      ]}
+    >
+      {
+        eyebrow && (
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary-700 text-xs font-semibold uppercase tracking-wider">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary" />
+            {eyebrow}
+          </span>
+        )
+      }
+      <h2
+        class="text-3xl md:text-4xl font-bold text-secondary leading-tight"
+      >
+        {title}
+      </h2>
       <p
         class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0"
       >
@@ -42,32 +75,39 @@ const {
     <div
       class="flex-1 w-full max-w-md lg:max-w-xl flex justify-center reveal-scale delay-200"
     >
-      <!-- Phone Mockup Frame -->
-      <div
-        class="relative bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl border-4 border-gray-800 w-64 md:w-72 lg:w-80"
-      >
-        <!-- Screen Content -->
+      <!-- Phone Mockup Frame with branded glow -->
+      <div class="relative group">
+        <!-- Animated brand glow behind phone -->
         <div
-          class="bg-gray-800 rounded-[2rem] overflow-hidden relative aspect-[9/19]"
+          class="absolute -inset-6 rounded-[3rem] bg-gradient-to-tr from-primary via-accent to-secondary opacity-30 blur-2xl group-hover:opacity-50 transition duration-500"
         >
-          {
-            imageSrc ? (
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                class="absolute inset-0 w-full h-full object-cover"
-              />
-            ) : (
-              <div class="w-full h-full bg-gray-700 flex items-center justify-center text-gray-500">
-                <span class="text-sm">No Image</span>
-              </div>
-            )
-          }
         </div>
-        <!-- Notch -->
         <div
-          class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-5 bg-gray-900 rounded-b-xl z-20"
+          class="relative bg-dark rounded-[2.5rem] p-3 shadow-2xl border-4 border-dark-700 w-64 md:w-72 lg:w-80 transition-transform duration-500 group-hover:-translate-y-2"
         >
+          <!-- Screen Content -->
+          <div
+            class="bg-dark-700 rounded-[2rem] overflow-hidden relative aspect-[9/19]"
+          >
+            {
+              imageSrc ? (
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <div class="w-full h-full bg-dark-400 flex items-center justify-center text-slate-300">
+                  <span class="text-sm">No Image</span>
+                </div>
+              )
+            }
+          </div>
+          <!-- Notch -->
+          <div
+            class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-5 bg-dark rounded-b-xl z-20"
+          >
+          </div>
         </div>
       </div>
     </div>

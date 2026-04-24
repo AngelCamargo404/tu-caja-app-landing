@@ -66,7 +66,9 @@ const { title } = Astro.props;
       });
     </script>
   </head>
-  <body class="bg-slate-50 text-slate-900 font-sans">
+  <body
+    class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-primary/30 selection:text-secondary-700"
+  >
     <slot />
 
     <script is:inline type="module" src="/scripts/cookieconsent-config.js"
@@ -98,15 +100,69 @@ const { title } = Astro.props;
 
 <style is:global>
   :root {
-    --accent: 49, 176, 153;
-    --accent-light: 41, 171, 226;
-    --accent-dark: 28, 38, 52;
+    --brand-primary: 49, 176, 153;
+    --brand-secondary: 34, 57, 107;
+    --brand-accent: 41, 171, 226;
+    --brand-dark: 28, 38, 52;
     --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
+      135deg,
+      rgb(var(--brand-primary)),
+      rgb(var(--brand-accent)) 50%,
+      rgb(var(--brand-secondary)) 100%
     );
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Branded text selection on links/buttons in dark sections */
+  .bg-dark ::selection,
+  .bg-secondary ::selection {
+    background: rgba(49, 176, 153, 0.45);
+    color: #fff;
+  }
+
+  /* Animated gradient text helper */
+  .text-gradient-brand {
+    background-image: linear-gradient(
+      90deg,
+      rgb(var(--brand-primary)),
+      rgb(var(--brand-accent)),
+      rgb(var(--brand-primary))
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* Branded scrollbar (non-essential progressive enhancement) */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--brand-primary)),
+      rgb(var(--brand-accent))
+    );
+    border-radius: 9999px;
+  }
+
+  /* Decorative animated blobs */
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 0;
   }
 
   /* Animaciones de Scroll */
@@ -171,5 +227,18 @@ const { title } = Astro.props;
   }
   .delay-700 {
     transition-delay: 700ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale,
+    .reveal-blur {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
   }
 </style>

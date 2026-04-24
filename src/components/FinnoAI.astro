@@ -5,37 +5,51 @@ import mascotHead from "../assets/images/MASCOTA HEAD.png";
 
 <section
   id="finno"
-  class="py-24 px-4 sm:px-6 lg:px-8 bg-dark text-white overflow-hidden relative"
+  class="relative py-28 px-4 sm:px-6 lg:px-8 bg-dark text-white overflow-hidden"
 >
+  <!-- Layered branded background -->
   <div
-    class="absolute inset-0 bg-gradient-to-b from-secondary/20 to-dark pointer-events-none"
+    class="absolute inset-0 bg-gradient-to-b from-secondary/40 via-dark to-dark pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute -top-20 -left-20 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-float-slower pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute -bottom-24 -right-20 w-96 h-96 bg-accent/30 rounded-full blur-3xl animate-float-slow pointer-events-none"
   >
   </div>
 
   <div class="max-w-7xl mx-auto text-center relative z-10">
     <div class="flex justify-center mb-6">
       <div
-        class="bg-secondary/30 p-4 rounded-full border border-secondary/50 shadow-[0_0_30px_rgba(59,130,246,0.3)] reveal-scale"
+        class="relative bg-secondary/40 p-4 rounded-full border border-primary/40 shadow-brand-glow reveal-scale"
       >
+        <span
+          class="absolute inset-0 rounded-full animate-pulse-ring"
+          aria-hidden="true"></span>
         <Image
           src={mascotHead}
           alt="Finno Mascot"
-          class="w-24 h-24 object-contain animate-pulse"
+          class="relative w-24 h-24 object-contain animate-float-slow"
         />
       </div>
     </div>
 
     <div
-      class="inline-block mb-4 px-3 py-1 bg-secondary/50 rounded-full text-blue-200 text-sm font-semibold border border-secondary reveal delay-100"
+      class="inline-block mb-4 px-3 py-1 bg-secondary/60 rounded-full text-primary-200 text-sm font-semibold border border-primary/40 reveal delay-100"
     >
       ✨ Potenciado por Inteligencia Artificial
     </div>
     <h2
-      class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent reveal delay-200"
+      class="text-4xl md:text-5xl font-bold mb-6 text-gradient-brand reveal delay-200"
     >
       Conoce a FINNO
     </h2>
-    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-16 reveal delay-300">
+    <p
+      class="text-xl text-slate-300 max-w-3xl mx-auto mb-16 reveal delay-300"
+    >
       Tu asistente personal inteligente. Haz preguntas, recibe consejos
       personalizados y optimiza tus gastos con una IA que aprende de tus hábitos
       financieros.
@@ -43,33 +57,45 @@ import mascotHead from "../assets/images/MASCOTA HEAD.png";
 
     <div class="grid md:grid-cols-3 gap-8 text-center lg:text-left">
       <div
-        class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition duration-300 reveal delay-400"
+        class="group bg-white/5 backdrop-blur p-8 rounded-2xl border border-white/10 hover:border-primary/60 hover:-translate-y-1 hover:shadow-brand-glow transition-all duration-300 reveal delay-400"
       >
-        <div class="text-4xl mb-4">💬</div>
-        <h3 class="text-xl font-bold mb-3">Chat Financiero</h3>
-        <p class="text-gray-400">
+        <div
+          class="text-4xl mb-4 inline-flex w-14 h-14 items-center justify-center rounded-xl bg-primary/20 group-hover:bg-primary/30 transition"
+        >
+          💬
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-white">Chat Financiero</h3>
+        <p class="text-slate-300/90">
           Habla naturalmente con FINNO sobre tus dudas. "¿Cuánto gasté en café
           este mes?" o "¿Cómo puedo ahorrar para un viaje?".
         </p>
       </div>
 
       <div
-        class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition duration-300 reveal delay-500"
+        class="group bg-white/5 backdrop-blur p-8 rounded-2xl border border-white/10 hover:border-accent/60 hover:-translate-y-1 hover:shadow-accent-glow transition-all duration-300 reveal delay-500"
       >
-        <div class="text-4xl mb-4">💡</div>
-        <h3 class="text-xl font-bold mb-3">Tips Inteligentes</h3>
-        <p class="text-gray-400">
+        <div
+          class="text-4xl mb-4 inline-flex w-14 h-14 items-center justify-center rounded-xl bg-accent/20 group-hover:bg-accent/30 transition"
+        >
+          💡
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-white">Tips Inteligentes</h3>
+        <p class="text-slate-300/90">
           Recibe recomendaciones proactivas basadas en tus patrones de gasto
           para mejorar tu salud financiera día a día.
         </p>
       </div>
 
       <div
-        class="bg-gray-900/50 p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition duration-300 reveal delay-700"
+        class="group bg-white/5 backdrop-blur p-8 rounded-2xl border border-white/10 hover:border-primary/60 hover:-translate-y-1 hover:shadow-brand-glow transition-all duration-300 reveal delay-700"
       >
-        <div class="text-4xl mb-4">📊</div>
-        <h3 class="text-xl font-bold mb-3">Análisis Profundo</h3>
-        <p class="text-gray-400">
+        <div
+          class="text-4xl mb-4 inline-flex w-14 h-14 items-center justify-center rounded-xl bg-primary/20 group-hover:bg-primary/30 transition"
+        >
+          📊
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-white">Análisis Profundo</h3>
+        <p class="text-slate-300/90">
           FINNO analiza tus datos para encontrar oportunidades de ahorro que
           quizás pasaste por alto.
         </p>
