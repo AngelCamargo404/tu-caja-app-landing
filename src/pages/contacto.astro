@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Contacto - Tu Caja App">
+  <Navbar />
+
+  <main class="relative pt-28 pb-20 bg-brand-gradient-soft dark:bg-brand-gradient-soft-dark overflow-hidden">
+    <div class="blob bg-primary/30 w-[26rem] h-[26rem] -top-24 -left-24 animate-float-slower"></div>
+    <div class="blob bg-accent/30 w-[20rem] h-[20rem] top-60 -right-16 animate-float-slow"></div>
+
+    <div class="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <header class="text-center mb-12 reveal">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-secondary dark:text-white mb-4 leading-tight">
+          Contáctanos
+        </h1>
+        <p class="text-slate-600 dark:text-slate-300">
+          ¿Tienes alguna pregunta, sugerencia o necesitas soporte? Escríbenos y te responderemos lo antes posible.
+        </p>
+      </header>
+
+      <!-- Quick contact cards -->
+      <div class="grid sm:grid-cols-2 gap-4 mb-10 reveal delay-100">
+        <a
+          href="https://t.me/+UeNBzD5prKNhYmMx"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center gap-4 bg-white/70 dark:bg-dark-700/60 backdrop-blur border border-primary/10 dark:border-dark-600 rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:border-primary/40 transition-all"
+        >
+          <div class="w-11 h-11 rounded-xl bg-accent/15 dark:bg-accent/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.68c.223-.198-.054-.308-.346-.11l-6.4 4.03-2.76-.918c-.6-.187-.612-.6.125-.89l10.782-4.156c.5-.18.943.112.78.89z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-secondary dark:text-white text-sm">Telegram</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Únete a nuestra comunidad</p>
+          </div>
+          <svg class="w-4 h-4 text-slate-400 ml-auto group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <a
+          href="#contact-form"
+          class="group flex items-center gap-4 bg-white/70 dark:bg-dark-700/60 backdrop-blur border border-primary/10 dark:border-dark-600 rounded-2xl p-5 shadow-sm hover:-translate-y-1 hover:border-primary/40 transition-all"
+        >
+          <div class="w-11 h-11 rounded-xl bg-primary/15 dark:bg-primary/20 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-secondary dark:text-white text-sm">Email</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Envíanos un mensaje</p>
+          </div>
+          <svg class="w-4 h-4 text-slate-400 ml-auto group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Contact form -->
+      <div id="contact-form" class="bg-white/80 dark:bg-dark-700/70 backdrop-blur border border-primary/10 dark:border-dark-600 rounded-3xl p-8 shadow-sm reveal delay-200">
+        <h2 class="text-xl font-bold text-secondary dark:text-white mb-6">Envíanos un mensaje</h2>
+        <form id="contact-form-el" class="space-y-5" novalidate>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Nombre</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Tu nombre"
+                class="w-full rounded-xl border border-slate-200 dark:border-dark-600 bg-white dark:bg-dark-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 transition"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="tu@email.com"
+                class="w-full rounded-xl border border-slate-200 dark:border-dark-600 bg-white dark:bg-dark-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 transition"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="subject" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Asunto</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="¿En qué podemos ayudarte?"
+              class="w-full rounded-xl border border-slate-200 dark:border-dark-600 bg-white dark:bg-dark-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 transition"
+            />
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Mensaje</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              placeholder="Escribe tu mensaje aquí..."
+              class="w-full rounded-xl border border-slate-200 dark:border-dark-600 bg-white dark:bg-dark-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 transition resize-none"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full bg-gradient-to-r from-primary to-accent text-white font-semibold py-3 rounded-xl hover:shadow-brand-glow hover:-translate-y-0.5 transition-all duration-200"
+          >
+            Enviar mensaje
+          </button>
+          <p id="form-status" class="text-center text-sm hidden"></p>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form-el') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  const btn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!btn || !status) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    const data = new FormData(form);
+    const body = {
+      name: data.get('name'),
+      email: data.get('email'),
+      subject: data.get('subject'),
+      message: data.get('message'),
+    };
+
+    // Replace with your actual form endpoint (e.g. Formspree, Resend, etc.)
+    try {
+      await new Promise((r) => setTimeout(r, 800)); // placeholder delay
+      status.textContent = '¡Mensaje enviado! Te responderemos pronto.';
+      status.className = 'text-center text-sm text-primary-700 dark:text-primary-300';
+      status.classList.remove('hidden');
+      form.reset();
+    } catch {
+      status.textContent = 'Ocurrió un error. Por favor intenta de nuevo.';
+      status.className = 'text-center text-sm text-red-500';
+      status.classList.remove('hidden');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Enviar mensaje';
+    }
+  });
+</script>

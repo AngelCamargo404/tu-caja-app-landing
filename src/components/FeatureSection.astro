@@ -2,6 +2,23 @@
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 
+type HighlightIcon =
+  | "shield"
+  | "fingerprint"
+  | "lock"
+  | "chart"
+  | "bell"
+  | "calendar"
+  | "target"
+  | "spark"
+  | "trophy";
+
+interface Highlight {
+  icon: HighlightIcon;
+  title: string;
+  text: string;
+}
+
 interface Props {
   title: string;
   description: string;
@@ -10,6 +27,7 @@ interface Props {
   reversed?: boolean;
   id?: string;
   eyebrow?: string;
+  highlights?: Highlight[];
 }
 
 const {
@@ -20,14 +38,36 @@ const {
   reversed = false,
   id,
   eyebrow,
+  highlights = [],
 } = Astro.props;
+
+const iconPaths: Record<HighlightIcon, string> = {
+  shield:
+    "M12 2.25c-2.21 1.5-5.07 2.55-8.25 2.7v6.3c0 5.18 3.55 9.78 8.25 11 4.7-1.22 8.25-5.82 8.25-11v-6.3c-3.18-.15-6.04-1.2-8.25-2.7z M9.5 12.5l1.75 1.75L15 10.5",
+  fingerprint:
+    "M12 11c-1.66 0-3 1.34-3 3 0 1.1.45 2.1 1.17 2.83 M12 7c-3.31 0-6 2.69-6 6 0 1.45.51 2.79 1.36 3.83 M12 3a9 9 0 00-9 9c0 1.83.55 3.54 1.5 4.97 M16.5 20.5C18.66 18.51 20 15.81 20 13c0-4.42-3.58-8-8-8",
+  lock:
+    "M16.5 10.5V7.5a4.5 4.5 0 10-9 0v3 M5.25 10.5h13.5a1.5 1.5 0 011.5 1.5v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V12a1.5 1.5 0 011.5-1.5z",
+  chart:
+    "M3 3v18h18 M7 14l3-3 4 4 5-6",
+  bell:
+    "M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0",
+  calendar:
+    "M6.75 3v2.25 M17.25 3v2.25 M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5",
+  target:
+    "M12 21a9 9 0 100-18 9 9 0 000 18z M12 17a5 5 0 100-10 5 5 0 000 10z M12 13a1 1 0 100-2 1 1 0 000 2z",
+  spark:
+    "M12 3v3 M12 18v3 M5.636 5.636l2.121 2.121 M16.243 16.243l2.121 2.121 M3 12h3 M18 12h3 M5.636 18.364l2.121-2.121 M16.243 7.757l2.121-2.121",
+  trophy:
+    "M8 21h8 M12 17v4 M7 4h10v4a5 5 0 01-10 0V4z M5 4H3v2a4 4 0 004 4 M19 4h2v2a4 4 0 01-4 4",
+};
 ---
 
 <section
   id={id}
   class:list={[
     "relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden",
-    reversed ? "bg-slate-50" : "bg-white",
+    reversed ? "bg-slate-50 dark:bg-dark-900" : "bg-white dark:bg-dark-700",
   ]}
 >
   <!-- Soft brand accent -->
@@ -47,28 +87,54 @@ const {
   >
     <div
       class:list={[
-        "flex-1 space-y-6 text-center lg:text-left",
+        "flex-1 space-y-7 text-center lg:text-left",
         reversed ? "reveal-right" : "reveal-left",
       ]}
     >
-      {
-        eyebrow && (
-          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary-700 text-xs font-semibold uppercase tracking-wider">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary" />
-            {eyebrow}
-          </span>
-        )
-      }
       <h2
-        class="text-3xl md:text-4xl font-bold text-secondary leading-tight"
+        class="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-secondary dark:text-white leading-[1.1] tracking-tight"
       >
         {title}
       </h2>
       <p
-        class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+        class="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0"
       >
         {description}
       </p>
+
+      {
+        highlights.length > 0 && (
+          <ul class="grid sm:grid-cols-2 gap-3 pt-2 max-w-2xl mx-auto lg:mx-0">
+            {highlights.map((h) => (
+              <li class="group flex items-start gap-3 rounded-xl p-3 -mx-3 hover:bg-white dark:hover:bg-dark-800 hover:shadow-sm transition-all duration-300 text-left">
+                <span class="flex-shrink-0 inline-flex w-10 h-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-accent/15 dark:from-primary/25 dark:to-accent/25 text-primary dark:text-primary-200 group-hover:from-primary group-hover:to-accent group-hover:text-white transition-all duration-300">
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d={iconPaths[h.icon]} />
+                  </svg>
+                </span>
+                <div class="min-w-0">
+                  <p class="font-semibold text-secondary dark:text-white text-sm leading-snug">
+                    {h.title}
+                  </p>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 leading-snug mt-0.5">
+                    {h.text}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
       <slot name="extra" />
     </div>
 

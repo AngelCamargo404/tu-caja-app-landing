@@ -1,0 +1,132 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { Image } from "astro:assets";
+import logoImage from "../assets/images/LOGO CAJA.png";
+---
+
+<Layout title="Nosotros - Tu Caja App">
+  <Navbar />
+
+  <main class="relative pt-28 pb-20 bg-brand-gradient-soft dark:bg-brand-gradient-soft-dark overflow-hidden">
+    <div class="blob bg-primary/30 w-[28rem] h-[28rem] -top-24 -left-24 animate-float-slower"></div>
+    <div class="blob bg-accent/30 w-[22rem] h-[22rem] top-60 -right-20 animate-float-slow"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <header class="text-center mb-16 reveal">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-secondary dark:text-white mb-4 leading-tight">
+          Hecho por personas,
+          <span class="text-gradient-brand"> para personas</span>
+        </h1>
+        <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+          Tu Caja nació de una pregunta que demasiados nos hacemos al final del mes: <em>"¿A dónde se fue el dinero?"</em>
+        </p>
+      </header>
+
+      <!-- Origin story -->
+      <section class="mb-16 reveal">
+        <div class="bg-white/70 dark:bg-dark-700/60 backdrop-blur border border-primary/10 dark:border-dark-600 rounded-3xl p-8 md:p-10 shadow-sm space-y-4">
+          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+            No eres mal administrador. No te falta disciplina. Lo que falta es una herramienta que trabaje <em>contigo</em>, no contra ti.
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Las apps de finanzas que existían pedían demasiado: demasiada configuración, demasiados tecnicismos, demasiado tiempo. Y al final, la mayoría las abandona a las dos semanas.
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Por eso construimos <strong class="text-primary-700 dark:text-primary-300">Tu Caja</strong>: una sola app donde puedas ver tus finanzas con claridad, guardar tus claves con seguridad y hablar con una IA que entiende tu situación real — todo sin necesitar un título en economía.
+          </p>
+        </div>
+      </section>
+
+      <!-- Mission -->
+      <section class="grid md:grid-cols-2 gap-10 mb-16 items-center">
+        <div class="reveal-left space-y-4">
+          <h2 class="text-2xl font-extrabold text-secondary dark:text-white">Lo que nos mueve</h2>
+          <p class="text-slate-600 dark:text-slate-300">
+            Queremos que cualquier persona — sin importar si gana mucho o poco, si estudió finanzas o no — pueda tomar decisiones inteligentes con su dinero.
+          </p>
+          <p class="text-slate-600 dark:text-slate-300">
+            No somos un banco. No somos una app para expertos. Somos el amigo financiero que te dice la verdad, te ayuda a organizarte y celebra contigo cuando alcanzas una meta.
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 font-medium">
+            Eso es FINNO. Eso es Tu Caja.
+          </p>
+        </div>
+        <div class="flex justify-center reveal-right">
+          <div class="bg-white/70 dark:bg-dark-700/60 backdrop-blur border border-primary/15 dark:border-dark-600 rounded-3xl p-10 shadow-md">
+            <Image src={logoImage} alt="Tu Caja App" class="h-24 w-auto mx-auto" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Values -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-extrabold text-secondary dark:text-white mb-8 text-center reveal">
+          En qué creemos
+        </h2>
+        <div class="grid sm:grid-cols-3 gap-6">
+          {[
+            {
+              icon: "💬",
+              title: "Honestidad",
+              desc: "Te mostramos tus hábitos como son. Sin suavizar los números, porque la verdad es la que ayuda a mejorar.",
+            },
+            {
+              icon: "🤝",
+              title: "Cercanía",
+              desc: "Somos un equipo pequeño que lee cada mensaje. Construimos esto contigo, no para ti desde lejos.",
+            },
+            {
+              icon: "🔑",
+              title: "Tu control, siempre",
+              desc: "Tus datos son tuyos. Ni nosotros vemos lo que guardas en tu bóveda. El control es tuyo y de nadie más.",
+            },
+          ].map((v, i) => (
+            <div class={`reveal bg-white/70 dark:bg-dark-700/60 backdrop-blur border border-primary/10 dark:border-dark-600 rounded-2xl p-6 text-center shadow-sm delay-${i * 100}`}>
+              <div class="text-4xl mb-3">{v.icon}</div>
+              <h3 class="font-bold text-secondary dark:text-white mb-2">{v.title}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Community CTA -->
+      <section class="mb-10 reveal">
+        <div class="bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 border border-primary/20 dark:border-primary/30 rounded-3xl p-8 text-center">
+          <p class="text-2xl font-bold text-secondary dark:text-white mb-3">Construimos esto para ti</p>
+          <p class="text-slate-600 dark:text-slate-300 max-w-xl mx-auto mb-6">
+            Y queremos seguir escuchándote. Únete a nuestra comunidad en Telegram, cuéntanos qué necesitas, qué te gusta y qué mejorarías. Cada mensaje nos importa.
+          </p>
+          <a
+            href="https://t.me/+UeNBzD5prKNhYmMx"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-semibold text-sm hover:bg-primary-700 transition-colors duration-200"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 14.07l-2.95-.924c-.64-.203-.653-.64.136-.948l11.57-4.461c.537-.194 1.006.131.636.511z"/>
+            </svg>
+            Unirme a la comunidad
+          </a>
+        </div>
+      </section>
+
+      <!-- Company -->
+      <section class="text-center reveal">
+        <div class="inline-block bg-white/70 dark:bg-dark-700/60 backdrop-blur border border-primary/10 dark:border-dark-600 rounded-2xl px-8 py-6 shadow-sm">
+          <p class="text-slate-500 dark:text-slate-400 text-sm">
+            Tu Caja App es desarrollada por
+            <strong class="text-secondary dark:text-white"> Mundo Pixelia C.A.</strong>
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

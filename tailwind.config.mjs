@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+	darkMode: 'class',
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
@@ -63,16 +64,22 @@ export default {
 					'linear-gradient(135deg, #31B099 0%, #29ABE2 50%, #22396B 100%)',
 				'brand-gradient-soft':
 					'linear-gradient(135deg, #E8F8F4 0%, #E6F5FC 60%, #FFFFFF 100%)',
+				'brand-gradient-soft-dark':
+					'linear-gradient(135deg, #0F372F 0%, #08242E 60%, #0A0E13 100%)',
 			},
 			boxShadow: {
 				'brand-glow': '0 0 40px rgba(49, 176, 153, 0.35)',
 				'accent-glow': '0 0 40px rgba(41, 171, 226, 0.35)',
 			},
 			keyframes: {
-				'float-slow': {
-					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-15px)' },
-				},
+			'float-fast': {
+				'0%, 100%': { transform: 'translateY(0px)' },
+				'50%': { transform: 'translateY(-12px)' },
+			},
+			'float-slow': {
+				'0%, 100%': { transform: 'translateY(0px)' },
+				'50%': { transform: 'translateY(-15px)' },
+			},
 				'float-slower': {
 					'0%, 100%': { transform: 'translate(0px, 0px)' },
 					'50%': { transform: 'translate(10px, -20px)' },
@@ -113,7 +120,8 @@ export default {
 				},
 			},
 			animation: {
-				'float-slow': 'float-slow 6s ease-in-out infinite',
+				'float-fast': 'float-fast 2.8s ease-in-out infinite',
+			'float-slow': 'float-slow 6s ease-in-out infinite',
 				'float-slower': 'float-slower 9s ease-in-out infinite',
 				'gradient-x': 'gradient-x 8s ease infinite',
 				'fade-in-up': 'fade-in-up 0.8s ease-out both',

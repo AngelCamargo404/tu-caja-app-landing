@@ -1,0 +1,674 @@
+---
+import { Image } from "astro:assets";
+import captura1 from "../assets/images/Captura1.png";
+import captura2 from "../assets/images/Captura2.png";
+import categorias from "../assets/images/Categorias.png";
+import listaDeseos from "../assets/images/Lista-deseos.png";
+import presupuestos from "../assets/images/apartado-presupuestos.png";
+import boveda from "../assets/images/boveda-seguridad.png";
+
+const iosScreens = [
+  { src: captura2, alt: "Pantalla principal", caption: "Resumen general" },
+  { src: presupuestos, alt: "Presupuestos", caption: "Presupuestos" },
+  { src: boveda, alt: "Bóveda de seguridad", caption: "Bóveda segura" },
+  { src: listaDeseos, alt: "Lista de deseos", caption: "Metas y deseos" },
+  { src: categorias, alt: "Categorías", caption: "Categorías" },
+  { src: captura1, alt: "Estadísticas", caption: "Estadísticas" },
+];
+
+const androidScreens = [
+  { caption: "Resumen general" },
+  { caption: "Presupuestos" },
+  { caption: "Bóveda segura" },
+  { caption: "Metas y deseos" },
+  { caption: "Categorías" },
+  { caption: "Estadísticas" },
+];
+---
+
+<section
+  id="capturas"
+  class="relative py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark-700 overflow-hidden"
+>
+  <!-- Decorative blurs -->
+  <div
+    class="absolute -top-24 -left-24 w-96 h-96 bg-primary/15 dark:bg-primary/20 rounded-full blur-3xl pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute -bottom-24 -right-24 w-96 h-96 bg-accent/15 dark:bg-accent/20 rounded-full blur-3xl pointer-events-none"
+  >
+  </div>
+
+  <div class="relative max-w-7xl mx-auto z-10">
+    <!-- Header -->
+    <div class="text-center mb-10 reveal">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-secondary dark:text-white"
+      >
+        Diseñada para tu plataforma favorita
+      </h2>
+      <p
+        class="mt-3 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
+      >
+        Explora capturas reales de Tu Caja App en acción. Cambia entre iOS y
+        Android para ver cómo luce en tu dispositivo.
+      </p>
+    </div>
+
+    <!-- OS Tabs -->
+    <div class="flex justify-center mb-10 reveal delay-100">
+      <div
+        role="tablist"
+        aria-label="Selector de sistema operativo"
+        class="inline-flex p-1.5 rounded-full bg-slate-100 dark:bg-dark-800 border border-slate-200 dark:border-dark-500 shadow-sm"
+      >
+        <button
+          type="button"
+          role="tab"
+          id="os-tab-ios"
+          aria-selected="true"
+          aria-controls="os-panel-ios"
+          data-os="ios"
+          class="os-tab inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-full text-sm font-semibold transition-all duration-300"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"></path>
+          </svg>
+          iOS
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="os-tab-android"
+          aria-selected="false"
+          aria-controls="os-panel-android"
+          data-os="android"
+          class="os-tab inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-full text-sm font-semibold transition-all duration-300"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.6 9.48l1.84-3.18a.39.39 0 00-.13-.55.4.4 0 00-.55.13L16.9 9.09a11.45 11.45 0 00-9.8 0L5.24 5.88a.4.4 0 00-.55-.13.39.39 0 00-.13.55L6.4 9.48A10.93 10.93 0 001 18h22a10.93 10.93 0 00-5.4-8.52zM7 15.25a.93.93 0 11.93-.93.93.93 0 01-.93.93zm10 0a.93.93 0 11.93-.93.93.93 0 01-.93.93z"></path>
+          </svg>
+          Android
+        </button>
+      </div>
+    </div>
+
+    <!-- Slider container -->
+    <div class="relative">
+      <!-- iOS Panel -->
+      <div
+        id="os-panel-ios"
+        role="tabpanel"
+        aria-labelledby="os-tab-ios"
+        class="os-panel"
+        data-os="ios"
+      >
+        <div class="screenshot-slider relative">
+          <button
+            type="button"
+            class="slider-prev"
+            aria-label="Captura anterior"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="slider-next"
+            aria-label="Captura siguiente"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div class="slider-track-wrapper">
+            <ul class="slider-track" data-track="ios">
+              {
+                iosScreens.map((screen, i) => (
+                  <li class="slider-slide" data-index={i}>
+                    <div class="phone-frame group">
+                      <div class="phone-notch" />
+                      <div class="phone-screen">
+                        <Image
+                          src={screen.src}
+                          alt={screen.alt}
+                          class="absolute inset-0 w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                    <p class="slide-caption">{screen.caption}</p>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <!-- Dots -->
+          <div class="slider-dots" role="tablist" aria-label="Selector de captura">
+            {
+              iosScreens.map((_, i) => (
+                <button
+                  type="button"
+                  class="slider-dot"
+                  data-index={i}
+                  aria-label={`Ir a captura ${i + 1}`}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Android Panel -->
+      <div
+        id="os-panel-android"
+        role="tabpanel"
+        aria-labelledby="os-tab-android"
+        class="os-panel hidden"
+        data-os="android"
+      >
+        <div class="screenshot-slider relative">
+          <button
+            type="button"
+            class="slider-prev"
+            aria-label="Captura anterior"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="slider-next"
+            aria-label="Captura siguiente"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div class="slider-track-wrapper">
+            <ul class="slider-track" data-track="android">
+              {
+                androidScreens.map((screen, i) => (
+                  <li class="slider-slide" data-index={i}>
+                    <div class="phone-frame phone-frame-android">
+                      <div class="phone-camera-hole" />
+                      <div class="phone-screen phone-screen-android">
+                        <div class="android-placeholder">
+                          <svg class="w-12 h-12 opacity-30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M17.6 9.48l1.84-3.18a.39.39 0 00-.13-.55.4.4 0 00-.55.13L16.9 9.09a11.45 11.45 0 00-9.8 0L5.24 5.88a.4.4 0 00-.55-.13.39.39 0 00-.13.55L6.4 9.48A10.93 10.93 0 001 18h22a10.93 10.93 0 00-5.4-8.52zM7 15.25a.93.93 0 11.93-.93.93.93 0 01-.93.93zm10 0a.93.93 0 11.93-.93.93.93 0 01-.93.93z"></path>
+                          </svg>
+                          <p class="mt-3 text-xs font-medium tracking-wide uppercase opacity-50">
+                            Próximamente
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="slide-caption">{screen.caption}</p>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="slider-dots" role="tablist" aria-label="Selector de captura">
+            {
+              androidScreens.map((_, i) => (
+                <button
+                  type="button"
+                  class="slider-dot"
+                  data-index={i}
+                  aria-label={`Ir a captura ${i + 1}`}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <p class="mt-6 text-center text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
+          La versión de Android está en camino. Pronto compartiremos capturas
+          oficiales por aquí.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Tab styles ──────────────────────────── */
+  .os-tab {
+    color: rgb(71 85 105);
+  }
+  :global(.dark) .os-tab {
+    color: rgb(203 213 225);
+  }
+  .os-tab[aria-selected="true"] {
+    background: linear-gradient(135deg, #31B099 0%, #29ABE2 100%);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(49, 176, 153, 0.35);
+  }
+  .os-tab:not([aria-selected="true"]):hover {
+    color: rgb(15 23 42);
+  }
+  :global(.dark) .os-tab:not([aria-selected="true"]):hover {
+    color: #fff;
+  }
+
+  /* ── Slider container ────────────────────── */
+  .screenshot-slider {
+    position: relative;
+    padding: 0 1rem;
+  }
+
+  .slider-track-wrapper {
+    overflow: hidden;
+    padding: 2rem 0 1rem;
+    perspective: 1200px;
+  }
+
+  .slider-track {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.75rem, 3vw, 2.5rem);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  .slider-slide {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition:
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.55s ease,
+      filter 0.55s ease;
+    opacity: 0.45;
+    transform: scale(0.82);
+    filter: blur(1px);
+  }
+
+  .slider-slide[data-active="true"] {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+    z-index: 5;
+  }
+
+  .slider-slide[data-adjacent="true"] {
+    opacity: 0.72;
+    transform: scale(0.9);
+    filter: blur(0);
+  }
+
+  /* ── Phone frame ─────────────────────────── */
+  .phone-frame {
+    position: relative;
+    width: clamp(180px, 30vw, 260px);
+    aspect-ratio: 9 / 19.5;
+    background: #0a0e13;
+    border-radius: 2.25rem;
+    padding: 0.55rem;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+    transition: transform 0.4s ease;
+  }
+
+  .slider-slide[data-active="true"] .phone-frame {
+    box-shadow:
+      0 30px 60px -15px rgba(49, 176, 153, 0.35),
+      0 25px 50px -12px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  }
+
+  .phone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.75rem;
+    overflow: hidden;
+    background: #10161E;
+  }
+
+  .phone-notch {
+    position: absolute;
+    top: 0.55rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38%;
+    height: 1.1rem;
+    background: #0a0e13;
+    border-bottom-left-radius: 0.9rem;
+    border-bottom-right-radius: 0.9rem;
+    z-index: 2;
+  }
+
+  /* Android variant */
+  .phone-frame-android {
+    border-radius: 1.75rem;
+  }
+  .phone-screen-android {
+    border-radius: 1.35rem;
+    background: linear-gradient(160deg, #0f1b31 0%, #08111d 100%);
+  }
+  .phone-camera-hole {
+    position: absolute;
+    top: 0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 9999px;
+    background: #0a0e13;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.04);
+    z-index: 2;
+  }
+
+  .android-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #cfd9ed;
+    background:
+      radial-gradient(circle at 50% 30%, rgba(49, 176, 153, 0.15), transparent 60%),
+      repeating-linear-gradient(
+        45deg,
+        transparent 0 12px,
+        rgba(255, 255, 255, 0.025) 12px 24px
+      );
+  }
+
+  .slide-caption {
+    margin-top: 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgb(71 85 105);
+    text-align: center;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transform: translateY(6px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+  :global(.dark) .slide-caption {
+    color: rgb(203 213 225);
+  }
+  .slider-slide[data-active="true"] .slide-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Arrows ──────────────────────────────── */
+  .slider-prev,
+  .slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #22396B;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(34, 57, 107, 0.08);
+    box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.25);
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease,
+      color 0.25s ease;
+    cursor: pointer;
+  }
+  :global(.dark) .slider-prev,
+  :global(.dark) .slider-next {
+    background: rgba(22, 30, 41, 0.85);
+    color: #CFF1E8;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  .slider-prev:hover,
+  .slider-next:hover {
+    background: linear-gradient(135deg, #31B099 0%, #29ABE2 100%);
+    color: #fff;
+    transform: translateY(-50%) scale(1.06);
+  }
+  .slider-prev {
+    left: -0.25rem;
+  }
+  .slider-next {
+    right: -0.25rem;
+  }
+  @media (min-width: 768px) {
+    .slider-prev {
+      left: 1rem;
+    }
+    .slider-next {
+      right: 1rem;
+    }
+  }
+
+  /* ── Dots ────────────────────────────────── */
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .slider-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: rgb(203 213 225);
+    border: none;
+    cursor: pointer;
+    transition:
+      width 0.3s ease,
+      background-color 0.3s ease;
+    padding: 0;
+  }
+  :global(.dark) .slider-dot {
+    background: rgb(57 63 77);
+  }
+  .slider-dot[data-active="true"] {
+    width: 1.75rem;
+    background: linear-gradient(90deg, #31B099, #29ABE2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slider-track,
+    .slider-slide,
+    .phone-frame,
+    .slide-caption {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  type OS = "ios" | "android";
+
+  function detectDefaultOS(): OS {
+    if (typeof navigator === "undefined") return "ios";
+    const ua = navigator.userAgent || (navigator as any).vendor || "";
+    if (/android/i.test(ua)) return "android";
+    if (/iPad|iPhone|iPod/.test(ua)) return "ios";
+    return "ios";
+  }
+
+  function setupSlider(panel: HTMLElement) {
+    const track = panel.querySelector<HTMLElement>(".slider-track");
+    const slides = panel.querySelectorAll<HTMLElement>(".slider-slide");
+    const dots = panel.querySelectorAll<HTMLButtonElement>(".slider-dot");
+    const prevBtn = panel.querySelector<HTMLButtonElement>(".slider-prev");
+    const nextBtn = panel.querySelector<HTMLButtonElement>(".slider-next");
+    if (!track || slides.length === 0) return null;
+
+    let activeIndex = 0;
+    let autoplayId: number | null = null;
+    const total = slides.length;
+
+    function update() {
+      slides.forEach((slide, i) => {
+        const distance = i - activeIndex;
+        slide.removeAttribute("data-active");
+        slide.removeAttribute("data-adjacent");
+        if (i === activeIndex) {
+          slide.setAttribute("data-active", "true");
+        } else if (Math.abs(distance) === 1) {
+          slide.setAttribute("data-adjacent", "true");
+        }
+      });
+      dots.forEach((dot, i) => {
+        if (i === activeIndex) dot.setAttribute("data-active", "true");
+        else dot.removeAttribute("data-active");
+      });
+
+      const active = slides[activeIndex] as HTMLElement;
+      if (active && track && track.parentElement) {
+        const wrapper = track.parentElement;
+        const wrapperRect = wrapper.getBoundingClientRect();
+        const slideRect = active.getBoundingClientRect();
+        const trackRect = track.getBoundingClientRect();
+        const slideCenter = slideRect.left + slideRect.width / 2;
+        const wrapperCenter = wrapperRect.left + wrapperRect.width / 2;
+        const currentX = trackRect.left - wrapperRect.left;
+        const targetX = currentX + (wrapperCenter - slideCenter);
+        track.style.transform = `translateX(${targetX}px)`;
+      }
+    }
+
+    function goTo(i: number) {
+      activeIndex = (i + total) % total;
+      update();
+    }
+
+    prevBtn?.addEventListener("click", () => {
+      goTo(activeIndex - 1);
+      restartAutoplay();
+    });
+    nextBtn?.addEventListener("click", () => {
+      goTo(activeIndex + 1);
+      restartAutoplay();
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        goTo(i);
+        restartAutoplay();
+      });
+    });
+
+    // Touch / swipe
+    let touchStartX = 0;
+    let touchDeltaX = 0;
+    track.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchDeltaX = 0;
+        stopAutoplay();
+      },
+      { passive: true },
+    );
+    track.addEventListener(
+      "touchmove",
+      (e) => {
+        touchDeltaX = e.touches[0].clientX - touchStartX;
+      },
+      { passive: true },
+    );
+    track.addEventListener("touchend", () => {
+      if (Math.abs(touchDeltaX) > 40) {
+        goTo(activeIndex + (touchDeltaX < 0 ? 1 : -1));
+      }
+      restartAutoplay();
+    });
+
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayId = window.setInterval(() => {
+        goTo(activeIndex + 1);
+      }, 5000);
+    }
+    function stopAutoplay() {
+      if (autoplayId !== null) {
+        window.clearInterval(autoplayId);
+        autoplayId = null;
+      }
+    }
+    function restartAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    panel.addEventListener("mouseenter", stopAutoplay);
+    panel.addEventListener("mouseleave", startAutoplay);
+
+    window.addEventListener("resize", update);
+
+    update();
+    startAutoplay();
+
+    return {
+      update,
+      stopAutoplay,
+      startAutoplay,
+    };
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll<HTMLButtonElement>(".os-tab");
+    const panels = document.querySelectorAll<HTMLElement>(".os-panel");
+    if (!tabs.length || !panels.length) return;
+
+    const sliders = new Map<string, ReturnType<typeof setupSlider>>();
+    panels.forEach((panel) => {
+      const os = panel.dataset.os || "ios";
+      sliders.set(os, setupSlider(panel));
+    });
+
+    function selectOS(os: string) {
+      tabs.forEach((tab) => {
+        const isActive = tab.dataset.os === os;
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+      panels.forEach((panel) => {
+        const isActive = panel.dataset.os === os;
+        panel.classList.toggle("hidden", !isActive);
+        if (isActive) {
+          const ctrl = sliders.get(os);
+          // Recompute layout once visible
+          requestAnimationFrame(() => ctrl?.update());
+          ctrl?.startAutoplay();
+        } else {
+          sliders.get(panel.dataset.os || "")?.stopAutoplay();
+        }
+      });
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const os = tab.dataset.os;
+        if (os) selectOS(os);
+      });
+    });
+
+    selectOS(detectDefaultOS());
+  });
+</script>

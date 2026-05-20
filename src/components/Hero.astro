@@ -3,94 +3,198 @@ import DownloadButtons from "./DownloadButtons.astro";
 import { Image } from "astro:assets";
 import mascotHead from "../assets/images/MASCOTA HEAD.png";
 import heroImage from "../assets/images/Captura2.png";
+import feature1 from "../assets/images/boveda-seguridad.png";
+import feature2 from "../assets/images/apartado-presupuestos.png";
+import feature3 from "../assets/images/Lista-deseos.png";
+import feature4 from "../assets/images/Captura1.png";
 ---
 
 <section
   id="inicio"
-  class="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-brand-gradient-soft overflow-hidden"
+  class="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-brand-gradient-soft dark:bg-brand-gradient-soft-dark overflow-hidden"
 >
   <!-- Decorative animated blobs in brand colors -->
-  <div
-    class="blob bg-primary/40 w-[28rem] h-[28rem] -top-32 -left-24 animate-float-slower"
-  >
-  </div>
-  <div
-    class="blob bg-accent/40 w-[24rem] h-[24rem] top-20 -right-20 animate-float-slow"
-  >
-  </div>
-  <div
-    class="blob bg-secondary/20 w-[18rem] h-[18rem] bottom-0 left-1/3 animate-float-slower"
-  >
-  </div>
+  <div class="blob bg-primary/40 w-[28rem] h-[28rem] -top-32 -left-24 animate-float-slower"></div>
+  <div class="blob bg-accent/40 w-[24rem] h-[24rem] top-20 -right-20 animate-float-slow"></div>
+  <div class="blob bg-secondary/20 w-[18rem] h-[18rem] bottom-0 left-1/3 animate-float-slower"></div>
 
-  <div
-    class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10"
-  >
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+    <!-- Left: Text content -->
     <div class="text-center lg:text-left z-10 relative">
-      <!-- Mascot Image: Static and centered on mobile, Absolute positioned on desktop -->
+      <!-- Mascot Image -->
       <div
-        class="w-32 h-32 mx-auto lg:mx-0 mb-6 lg:absolute lg:-top-28 lg:mb-0 z-20 animate-float-slow reveal-scale"
+        id="finno-head"
+        class="w-32 h-32 mx-auto lg:mx-0 mb-2 lg:absolute lg:-top-32 lg:mb-0 z-20 reveal-scale"
+        style="will-change: transform;"
       >
         <Image
           src={mascotHead}
           alt="Finno Mascot"
-          class="w-full h-full object-contain drop-shadow-[0_15px_25px_rgba(34,57,107,0.35)]"
+          class="w-full h-full object-contain drop-shadow-[0_10px_18px_rgba(34,57,107,0.28)]"
         />
       </div>
 
-      <span
-        class="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-primary/30 text-secondary text-xs sm:text-sm font-semibold shadow-sm reveal"
-      >
-        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-        Tu salud financiera, en una sola app
-      </span>
-
-      <h1
-        class="text-5xl lg:text-6xl font-extrabold tracking-tight text-secondary mb-6 leading-tight reveal delay-100"
-      >
-        Tus finanzas, <span class="text-gradient-brand whitespace-nowrap"
-          >bajo control.</span
-        >
+      <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight text-secondary dark:text-white mb-6 leading-tight reveal delay-100">
+        Tus finanzas, <br class="sm:hidden" /><span class="whitespace-nowrap inline-block"><span
+          id="typewriter-text"
+          class="text-gradient-brand"
+        ></span><span
+          id="typewriter-cursor"
+          class="text-gradient-brand select-none"
+          aria-hidden="true"
+        >|</span></span>
       </h1>
-      <p
-        class="text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 reveal delay-200"
-      >
+      <p class="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 reveal delay-200">
         Gestiona tu dinero, guarda tus contraseñas y cumple tus metas con la
-        ayuda de <span class="font-semibold text-primary-700">FINNO</span>, tu
+        ayuda de <span class="font-semibold text-primary-700 dark:text-primary-300">FINNO</span>, tu
         asistente financiero personal con IA.
       </p>
       <div class="reveal delay-300">
         <DownloadButtons />
       </div>
     </div>
+
+    <!-- Right: Stacked screenshots (no phone frames) -->
     <div
-      class="relative mx-auto lg:ml-auto w-full max-w-sm lg:max-w-md reveal-scale delay-500"
+      class="relative mx-auto lg:ml-auto w-full max-w-xs md:max-w-sm lg:max-w-md reveal-scale delay-500 flex justify-center items-center"
+      style="padding: 2rem 4rem;"
     >
-      <!-- Phone Mockup Container -->
-      <div
-        class="relative bg-dark rounded-[3rem] p-4 shadow-2xl border-4 border-dark-700 aspect-[9/19] overflow-hidden animate-float-slow"
-      >
-        <!-- Screen Content -->
+      <!-- Decorative glow behind stack -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[70%] bg-gradient-to-tr from-primary/40 via-accent/40 to-secondary/30 rounded-full blur-3xl opacity-70 -z-10"></div>
+
+      <!-- Stack container -->
+      <div class="relative hero-stack-container">
+
+        <!-- Layer 4 — far back, right -->
         <div
-          class="h-full w-full bg-white rounded-[2rem] overflow-hidden flex flex-col relative"
+          class="absolute inset-0 rounded-2xl overflow-hidden shadow-lg"
+          style="opacity: 0.18; transform: rotate(11deg) translateX(90px) translateY(10px) scale(0.88); z-index: 1;"
+        >
+          <Image src={feature4} alt="" class="w-full h-full object-cover" loading="eager" />
+        </div>
+
+        <!-- Layer 3 — back, left -->
+        <div
+          class="absolute inset-0 rounded-2xl overflow-hidden shadow-lg"
+          style="opacity: 0.28; transform: rotate(-8deg) translateX(-80px) translateY(12px) scale(0.90); z-index: 2;"
+        >
+          <Image src={feature3} alt="" class="w-full h-full object-cover" loading="eager" />
+        </div>
+
+        <!-- Layer 2 — mid, right -->
+        <div
+          class="absolute inset-0 rounded-2xl overflow-hidden shadow-lg"
+          style="opacity: 0.45; transform: rotate(5deg) translateX(55px) translateY(5px) scale(0.94); z-index: 3;"
+        >
+          <Image src={feature2} alt="" class="w-full h-full object-cover" loading="eager" />
+        </div>
+
+        <!-- Layer 1 — near, left -->
+        <div
+          class="absolute inset-0 rounded-2xl overflow-hidden shadow-xl"
+          style="opacity: 0.65; transform: rotate(-3deg) translateX(-38px) translateY(3px) scale(0.97); z-index: 4;"
+        >
+          <Image src={feature1} alt="" class="w-full h-full object-cover" loading="eager" />
+        </div>
+
+        <!-- Main image — front, fully visible, static -->
+        <div
+          class="relative rounded-2xl overflow-hidden shadow-2xl"
+          style="z-index: 5;"
         >
           <Image
             src={heroImage}
             alt="Tu Caja App Screenshot"
-            class="absolute inset-0 w-full h-full object-cover"
+            class="w-full h-full object-cover"
+            loading="eager"
           />
         </div>
-        <!-- Notch -->
-        <div
-          class="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-6 bg-dark rounded-b-2xl z-20"
-        >
-        </div>
-      </div>
-      <!-- Decorative Elements -->
-      <div
-        class="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[100%] bg-gradient-to-tr from-primary/40 via-accent/40 to-secondary/30 rounded-full blur-3xl opacity-70"
-      >
+
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  // ── Typewriter effect for hero heading ─────────────────────────
+  const phrases = [
+    'bajo control.',
+    'simplificadas.',
+    'en tus manos.',
+    'al siguiente nivel.',
+  ];
+
+  const textEl = document.getElementById('typewriter-text');
+  const cursorEl = document.getElementById('typewriter-cursor');
+
+  if (textEl && cursorEl) {
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
+
+    const TYPING_SPEED = 75;
+    const DELETE_SPEED = 38;
+    const PAUSE_AFTER_TYPE = 2200;
+    const PAUSE_AFTER_DELETE = 350;
+
+    cursorEl.style.animation = 'tw-blink 0.75s step-end infinite';
+
+    function tick() {
+      const currentPhrase = phrases[phraseIndex];
+
+      if (!isDeleting) {
+        charIndex++;
+        textEl.textContent = currentPhrase.slice(0, charIndex);
+
+        if (charIndex === currentPhrase.length) {
+          isPaused = true;
+          setTimeout(() => {
+            isPaused = false;
+            isDeleting = true;
+            setTimeout(tick, DELETE_SPEED);
+          }, PAUSE_AFTER_TYPE);
+          return;
+        }
+      } else {
+        charIndex--;
+        textEl.textContent = currentPhrase.slice(0, charIndex);
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, PAUSE_AFTER_DELETE);
+          return;
+        }
+      }
+
+      setTimeout(tick, isDeleting ? DELETE_SPEED : TYPING_SPEED);
+    }
+
+    setTimeout(tick, 800);
+  }
+</script>
+
+<style>
+  @keyframes tw-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  .hero-stack-container {
+    width: 260px;
+    aspect-ratio: 9 / 19;
+  }
+
+  @media (min-width: 768px) {
+    .hero-stack-container {
+      width: 290px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-stack-container {
+      width: 320px;
+    }
+  }
+</style>

@@ -1,0 +1,53 @@
+---
+const faqs = [
+  {
+    question: "Que puedo gestionar con Tu Caja App?",
+    answer:
+      "Puedes organizar presupuestos, monitorear gastos, guardar informacion sensible en tu boveda y seguir metas personales desde una sola plataforma.",
+  },
+  {
+    question: "FINNO reemplaza la asesoria financiera profesional?",
+    answer:
+      "No. FINNO te ayuda a entender mejor tus datos y habitos, pero sus recomendaciones deben tomarse como orientacion complementaria.",
+  },
+  {
+    question: "La app esta pensada solo para uso personal?",
+    answer:
+      "Principalmente si. Esta disenada para personas que quieren claridad sobre su dinero, sus metas y su informacion financiera diaria.",
+  },
+  {
+    question: "Como funciona el contacto desde esta pagina?",
+    answer:
+      "El formulario usa Netlify Forms para recibir tus solicitudes cuando la landing se despliega en Netlify, sin necesidad de montar un backend aparte.",
+  },
+];
+---
+
+<section id="faq" class="relative py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark-700 overflow-hidden">
+  <div class="max-w-4xl mx-auto relative z-10">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary dark:text-white">
+        Preguntas frecuentes
+      </h2>
+      <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+        Respuestas rapidas para usuarios, aliados y personas interesadas en conocer mejor la plataforma.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {
+        faqs.map((item) => (
+          <details class="reveal group rounded-2xl border border-primary/10 dark:border-dark-500 bg-slate-50 dark:bg-dark-800 p-6 open:shadow-lg transition-shadow">
+            <summary class="list-none cursor-pointer flex items-center justify-between gap-6 text-left">
+              <span class="text-lg font-semibold text-secondary dark:text-white">{item.question}</span>
+              <span class="text-primary-700 dark:text-primary-200 text-2xl leading-none transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+              {item.answer}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

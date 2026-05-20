@@ -5,7 +5,7 @@ CookieConsent.run({
         consentModal: {
             layout: "box",
             position: "bottom left",
-            equalWeightButtons: true,
+            equalWeightButtons: false,
             flipButtons: false
         },
         preferencesModal: {
@@ -27,38 +27,38 @@ CookieConsent.run({
         translations: {
             es: {
                 consentModal: {
-                    title: "Bienvenido a este blog",
-                    description: "Al continuar, aceptas el uso de cookies.",
+                    title: "Tu privacidad nos importa",
+                    description: "Utilizamos cookies analíticas para mejorar tu experiencia. Al continuar, aceptas nuestros <a href=\"/terminos\" class=\"cc-link\">Términos y Condiciones</a> y nuestras <a href=\"/privacidad\" class=\"cc-link\">Políticas de Privacidad</a>.",
                     acceptAllBtn: "Aceptar todo",
-                    acceptNecessaryBtn: "Rechazar todo",
+                    acceptNecessaryBtn: "Solo esenciales",
                     showPreferencesBtn: "Gestionar preferencias",
-                    footer: "<a href=\"/politica-de-privacidad\">Política de privacidad</a>\n<a href=\"/politica-de-cookies\">Politica de Cookies</a>"
+                    footer: "<a href=\"/terminos\">Términos y Condiciones</a><a href=\"/privacidad\">Política de Privacidad</a>"
                 },
                 preferencesModal: {
-                    title: "Preferencias de Cookies",
+                    title: "Preferencias de Privacidad",
                     acceptAllBtn: "Aceptar todo",
-                    acceptNecessaryBtn: "Rechazar todo",
+                    acceptNecessaryBtn: "Solo esenciales",
                     savePreferencesBtn: "Guardar preferencias",
-                    closeIconLabel: "Cerrar modal",
+                    closeIconLabel: "Cerrar",
                     serviceCounterLabel: "Servicios",
                     sections: [
                         {
                             title: "Uso de Cookies",
-                            description: "En este blog se utilizan cookies para analizar el tráfico."
+                            description: "Usamos cookies para garantizar el funcionamiento básico del sitio y cookies analíticas para entender cómo interactúas con él y así mejorar nuestros servicios."
                         },
                         {
-                            title: "Cookies Estrictamente Necesarias <span class=\"pm__badge\">Siempre Activadas</span>",
-                            description: "Estas cookies son esenciales para el funcionamiento del sitio y no se pueden desactivar.",
+                            title: "Cookies Estrictamente Necesarias <span class=\"pm__badge\">Siempre Activas</span>",
+                            description: "Estas cookies son esenciales para el correcto funcionamiento del sitio y no pueden desactivarse.",
                             linkedCategory: "necessary"
                         },
                         {
                             title: "Cookies Analíticas",
-                            description: "Estas cookies ayudan a entender cómo interactúas con nuestro sitio para mejorar nuestros servicios continuamente.",
+                            description: "Nos ayudan a entender cómo usas el sitio para mejorar continuamente la experiencia. No se comparten con terceros.",
                             linkedCategory: "analytics"
                         },
                         {
                             title: "Más información",
-                            description: "Para cualquier consulta sobre nuestra política de cookies."
+                            description: "Para cualquier consulta sobre el uso de tus datos, revisa nuestras <a href=\"/privacidad\" class=\"cc-link\">Políticas de Privacidad</a> o nuestros <a href=\"/terminos\" class=\"cc-link\">Términos y Condiciones</a>."
                         }
                     ]
                 }

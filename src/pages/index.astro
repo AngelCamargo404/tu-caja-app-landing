@@ -2,9 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
+import ScreenshotShowcase from "../components/ScreenshotShowcase.astro";
 import FeatureSection from "../components/FeatureSection.astro";
 import FinnoAI from "../components/FinnoAI.astro";
 import CommunitySection from "../components/CommunitySection.astro";
+import QuickLinks from "../components/QuickLinks.astro";
 import Footer from "../components/Footer.astro";
 
 // Import images
@@ -20,43 +22,74 @@ import estadisticasImage from "../assets/images/Captura1.png";
   <main>
     <Hero />
 
-    <FeatureSection
-      id="boveda"
-      title="Bóveda de Seguridad"
-      description="Guarda tus contraseñas y documentos importantes con encriptación de grado militar. Tu seguridad es nuestra prioridad, mantén tus claves bancarias y personales en un solo lugar seguro."
-      imageSrc={bovedaImage}
-      imageAlt="Bóveda segura digital"
-    />
+    <ScreenshotShowcase />
 
-    <FeatureSection
-      id="presupuestos"
-      title="Presupuestos Inteligentes"
-      description="Crea presupuestos detallados para cada categoría de gasto. Divide tus fondos antes de usarlos y asegúrate de que cada centavo tenga un propósito. Recibe alertas cuando estés cerca de alcanzar tu límite."
-      imageSrc={presupuestosImage}
-      imageAlt="Gestión de presupuestos"
-      reversed={true}
-    />
+    <section id="caracteristicas">
+      <FeatureSection
+        id="boveda"
+        eyebrow="Bóveda Segura"
+        title="Tus datos sensibles, blindados"
+        description="Guarda contraseñas, claves bancarias y documentos importantes con cifrado de grado militar. Tu seguridad es nuestra prioridad, y todo permanece bajo tu control."
+        imageSrc={bovedaImage}
+        imageAlt="Bóveda segura digital"
+        highlights={[
+          { icon: "shield", title: "Cifrado AES-256", text: "Estándar bancario de extremo a extremo." },
+          { icon: "fingerprint", title: "Biometría", text: "Desbloquea con Face ID o huella." },
+          { icon: "lock", title: "Sólo tú", text: "Ni siquiera nosotros vemos tu contenido." },
+        ]}
+      />
 
-    <FeatureSection
-      id="metas"
-      title="Lista de Deseos y Metas"
-      description="Visualiza tus sueños y alcánzalos. Crea una lista de deseos, establece metas de ahorro y monitorea tu progreso. Ya sea un viaje, un auto nuevo o tu fondo de retiro, te ayudamos a llegar ahí."
-      imageSrc={metasImage}
-      imageAlt="Lista de metas financieras"
-    />
+      <FeatureSection
+        id="presupuestos"
+        eyebrow="Presupuestos"
+        title="Cada centavo con un propósito"
+        description="Crea presupuestos detallados por categoría, divide tus fondos antes de gastarlos y mantén el rumbo con alertas inteligentes cuando te acercas a tu límite."
+        imageSrc={presupuestosImage}
+        imageAlt="Gestión de presupuestos"
+        reversed={true}
+        highlights={[
+          { icon: "chart", title: "Por categoría", text: "Crea reglas finas para cada tipo de gasto." },
+          { icon: "bell", title: "Alertas en tiempo real", text: "Avisos cuando te acercas al tope." },
+          { icon: "calendar", title: "Comparativas", text: "Mide mes contra mes y mejora cada vez." },
+        ]}
+      />
 
-    <FeatureSection
-      id="estadisticas"
-      title="Estadísticas Detalladas"
-      description="Entiende a dónde va tu dinero con gráficas interactivas y reportes detallados. Visualiza tus gastos por categoría, periodo o método de pago para tomar decisiones informadas."
-      imageSrc={estadisticasImage}
-      imageAlt="Gráficas de estadísticas financieras"
-      reversed={true}
-    />
+      <FeatureSection
+        id="metas"
+        eyebrow="Metas y Deseos"
+        title="Convierte sueños en planes alcanzables"
+        description="Visualiza tus metas, define cuánto y cuándo, y monitorea tu progreso. Ya sea un viaje, un auto o tu fondo de retiro, te acompañamos paso a paso."
+        imageSrc={metasImage}
+        imageAlt="Lista de metas financieras"
+        highlights={[
+          { icon: "target", title: "Metas claras", text: "Define monto, fecha y prioridad." },
+          { icon: "spark", title: "Progreso visual", text: "Mira cuánto te falta de un vistazo." },
+          { icon: "trophy", title: "Logros", text: "Celebra cada hito que alcanzas." },
+        ]}
+      />
+
+      <FeatureSection
+        id="estadisticas"
+        eyebrow="Estadísticas"
+        title="Entiende a dónde va tu dinero"
+        description="Gráficas interactivas y reportes claros para descubrir patrones, identificar fugas y tomar decisiones financieras con criterio, no con corazonadas."
+        imageSrc={estadisticasImage}
+        imageAlt="Gráficas de estadísticas financieras"
+        reversed={true}
+        highlights={[
+          { icon: "chart", title: "Gráficas vivas", text: "Filtra por categoría, periodo o método." },
+          { icon: "spark", title: "Patrones ocultos", text: "Descubre dónde se va realmente tu dinero." },
+          { icon: "calendar", title: "Reportes claros", text: "Exporta resúmenes cuando los necesites." },
+        ]}
+      />
+    </section>
 
     <FinnoAI />
 
+    <QuickLinks />
+
     <CommunitySection />
+
   </main>
 
   <Footer />

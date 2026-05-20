@@ -1,0 +1,137 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const WP_API = "https://wp.tucajaapp.com/wp-json/wp/v2";
+
+interface WPPost {
+  id: number;
+  slug: string;
+  date: string;
+  modified: string;
+  title: { rendered: string };
+  content: { rendered: string };
+  excerpt: { rendered: string };
+  _embedded?: {
+    "wp:featuredmedia"?: Array<{ source_url: string; alt_text: string }>;
+    author?: Array<{ name: string; avatar_urls: Record<string, string> }>;
+  };
+}
+
+export async function getStaticPaths() {
+  let slugs: string[] = [];
+  try {
+    const res = await fetch(
+      `${WP_API}/posts?per_page=100&status=publish&_fields=slug`,
+      { headers: { Accept: "application/json" } }
+    );
+    if (res.ok) {
+      const posts: { slug: string }[] = await res.json();
+      slugs = posts.map((p) => p.slug);
+    }
+  } catch {}
+
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+
+let post: WPPost | null = null;
+let notFound = false;
+
+try {
+  const res = await fetch(
+    `${WP_API}/posts?slug=${slug}&_embed&status=publish`,
+    { headers: { Accept: "application/json" } }
+  );
+  if (res.ok) {
+    const data: WPPost[] = await res.json();
+    post = data[0] ?? null;
+    if (!post) notFound = true;
+  } else {
+    notFound = true;
+  }
+} catch {
+  notFound = true;
+}
+
+if (notFound) {
+  return Astro.redirect("/blog", 302);
+}
+
+const thumb = post!._embedded?.["wp:featuredmedia"]?.[0];
+const author = post!._embedded?.author?.[0];
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<Layout title={`${post!.title.rendered} - Blog Tu Caja App`}>
+  <Navbar />
+
+  <main class="relative pt-28 pb-20 bg-brand-gradient-soft dark:bg-brand-gradient-soft-dark overflow-hidden">
+    <div class="blob bg-primary/25 w-[26rem] h-[26rem] -top-24 -left-24 animate-float-slower"></div>
+    <div class="blob bg-accent/25 w-[20rem] h-[20rem] top-60 -right-20 animate-float-slow"></div>
+
+    <article class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Back link -->
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 dark:text-primary-300 hover:gap-3 transition-all mb-8 reveal"
+      >
+        <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+        Volver al blog
+      </a>
+
+      <!-- Meta -->
+      <header class="mb-8 reveal">
+        <p class="text-xs font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mb-3">
+          {formatDate(post!.date)}
+          {author && <span class="mx-2 opacity-40">·</span>}
+          {author && <span>Por {author.name}</span>}
+        </p>
+        <h1
+          class="text-3xl md:text-4xl font-extrabold text-secondary dark:text-white leading-tight mb-4"
+          set:html={post!.title.rendered}
+        />
+      </header>
+
+      <!-- Featured image -->
+      {thumb && (
+        <div class="rounded-2xl overflow-hidden mb-10 shadow-lg reveal">
+          <img
+            src={thumb.source_url}
+            alt={thumb.alt_text || post!.title.rendered}
+            class="w-full object-cover max-h-96"
+            loading="eager"
+          />
+        </div>
+      )}
+
+      <!-- Content -->
+      <div
+        class="prose prose-slate dark:prose-invert prose-headings:font-extrabold prose-a:text-primary-700 dark:prose-a:text-primary-300 prose-img:rounded-xl max-w-none reveal"
+        set:html={post!.content.rendered}
+      />
+
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* WordPress content styles */
+  .prose :global(figure) { margin: 2rem 0; }
+  .prose :global(figcaption) { text-align: center; font-size: 0.85rem; opacity: 0.6; }
+  .prose :global(.wp-block-image img) { border-radius: 0.75rem; }
+</style>

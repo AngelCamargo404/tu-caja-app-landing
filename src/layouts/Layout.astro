@@ -23,6 +23,19 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
+    <!-- Inline blocking script to prevent flash of wrong theme -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentHour = new Date().getHours();
+        const isNight = currentHour >= 19 || currentHour < 7;
+        if (stored === 'dark' || (!stored && (prefersDark || isNight))) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css"
@@ -67,7 +80,7 @@ const { title } = Astro.props;
     </script>
   </head>
   <body
-    class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-primary/30 selection:text-secondary-700"
+    class="bg-slate-50 dark:bg-dark-800 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-primary/30 dark:selection:bg-primary/40 selection:text-secondary-700 dark:selection:text-primary-200"
   >
     <slot />
 
@@ -145,6 +158,9 @@ const { title } = Astro.props;
   }
   ::-webkit-scrollbar-track {
     background: #f1f5f9;
+  }
+  .dark ::-webkit-scrollbar-track {
+    background: #1e293b;
   }
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(
@@ -240,5 +256,117 @@ const { title } = Astro.props;
       filter: none !important;
       transition: none !important;
     }
+  }
+
+  /* Cookie Consent — brand overrides */
+  :root {
+    --cc-font-family: inherit;
+    --cc-modal-border-radius: 1.25rem;
+    --cc-btn-border-radius: 9999px;
+
+    /* Modal background y textos — alto contraste */
+    --cc-bg: #ffffff;
+    --cc-primary-color: #0f1b31;       /* secondary-800: texto principal oscuro */
+    --cc-secondary-color: #22396B;     /* secondary-500: texto secundario */
+
+    /* Botón primario: teal sólido, texto blanco */
+    --cc-btn-primary-bg: #31B099;
+    --cc-btn-primary-color: #ffffff;
+    --cc-btn-primary-hover-bg: #1F7263;
+
+    /* Botón secundario: navy muy tenue con borde, texto navy */
+    --cc-btn-secondary-bg: #E7ECF6;
+    --cc-btn-secondary-color: #0f1b31;
+    --cc-btn-secondary-hover-bg: #CFD9ED;
+
+    --cc-separator-border-color: #CFD9ED;
+    --cc-cookie-category-block-bg: #E8F8F4;
+    --cc-cookie-category-block-border: #70D5BC;
+    --cc-cookie-category-block-hover-bg: #CFF1E8;
+    --cc-toggle-on-bg: #31B099;
+    --cc-toggle-off-bg: #9298A4;
+    --cc-toggle-readonly-bg: #A0E3D2;
+    --cc-overlay-bg: rgba(15, 27, 49, 0.55);
+    --cc-webkit-scrollbar-bg: #E8F8F4;
+    --cc-webkit-scrollbar-bg-hover: #70D5BC;
+    --cc-link-color: #1F7263;
+  }
+
+  .dark {
+    --cc-bg: #10161E;
+    --cc-primary-color: #f1f5f9;
+    --cc-secondary-color: #C9CCD2;     /* gris claro legible sobre fondo oscuro */
+
+    --cc-btn-primary-bg: #31B099;
+    --cc-btn-primary-color: #ffffff;
+    --cc-btn-primary-hover-bg: #27907D;
+
+    --cc-btn-secondary-bg: #1C2634;
+    --cc-btn-secondary-color: #e2e8f0;
+    --cc-btn-secondary-hover-bg: #393F4D;
+
+    --cc-separator-border-color: #393F4D;
+    --cc-cookie-category-block-bg: #0F1B31;
+    --cc-cookie-category-block-border: #27907D;
+    --cc-cookie-category-block-hover-bg: #175548;
+    --cc-toggle-on-bg: #31B099;
+    --cc-toggle-off-bg: #5C6577;
+    --cc-toggle-readonly-bg: #175548;
+    --cc-overlay-bg: rgba(5, 7, 9, 0.7);
+    --cc-webkit-scrollbar-bg: #1C2634;
+    --cc-webkit-scrollbar-bg-hover: #27907D;
+    --cc-link-color: #50C4AA;
+  }
+
+  /* Título en negrita */
+  #cc-main .cm__title {
+    font-weight: 700;
+    color: var(--cc-primary-color);
+  }
+
+  /* Descripción con buen contraste */
+  #cc-main .cm__desc {
+    color: var(--cc-secondary-color);
+  }
+
+  /* Links dentro del modal y descripción */
+  #cc-main .cm__footer a,
+  #cc-main .cc-link {
+    color: var(--cc-link-color);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  #cc-main .cm__footer a:hover,
+  #cc-main .cc-link:hover {
+    opacity: 0.8;
+  }
+
+  /* Sombra y borde tenue al modal */
+  #cc-main .cm {
+    box-shadow:
+      0 4px 24px rgba(15, 27, 49, 0.12),
+      0 1px 4px rgba(15, 27, 49, 0.06);
+    border: 1px solid rgba(49, 176, 153, 0.2);
+  }
+
+  .dark #cc-main .cm {
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.4),
+      0 1px 4px rgba(0, 0, 0, 0.2);
+    border-color: rgba(49, 176, 153, 0.15);
+  }
+
+  /* Botón preferencias (texto link) con contraste claro */
+  #cc-main .cm__btn-group .cm__btn--secondary:last-child {
+    background: transparent;
+    color: var(--cc-secondary-color);
+    font-weight: 500;
+  }
+  #cc-main .cm__btn-group .cm__btn--secondary:last-child:hover {
+    background: transparent;
+    color: var(--cc-primary-color);
+    text-decoration: underline;
   }
 </style>

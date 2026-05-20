@@ -5,7 +5,7 @@ import logoImage from "../assets/images/LOGO CAJA.png";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="relative bg-slate-50 border-t border-primary/10 overflow-hidden">
+<footer class="relative bg-slate-50 dark:bg-dark-800 border-t border-primary/10 dark:border-dark-600 overflow-hidden">
   <!-- Top brand gradient line -->
   <div
     class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-accent to-secondary"
@@ -16,62 +16,55 @@ const currentYear = new Date().getFullYear();
     <div class="grid md:grid-cols-4 gap-8 text-center md:text-left">
       <div class="col-span-1 md:col-span-2">
         <div
-          class="flex items-center justify-center md:justify-start gap-2 mb-4"
+          class="flex items-center justify-center md:justify-start mb-4"
         >
           <Image src={logoImage} alt="Tu Caja Logo" class="h-10 w-auto" />
-          <span class="text-2xl font-extrabold text-gradient-brand">
-            Tu Caja
-          </span>
         </div>
-        <p class="text-slate-500 max-w-sm mx-auto md:mx-0">
+        <p class="text-slate-500 dark:text-slate-400 max-w-sm mx-auto md:mx-0">
           La plataforma integral para gestionar tus finanzas personales, cumplir
           tus metas y asegurar tu futuro.
         </p>
       </div>
 
       <div>
-        <h4 class="font-bold text-secondary mb-4">Sobre Tu Caja</h4>
-        <ul class="space-y-2 text-sm text-slate-600">
+        <h4 class="font-bold text-secondary dark:text-white mb-4">Sobre Tu Caja</h4>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
           <li>
-            <a href="/#boveda" class="hover:text-primary-700 transition">Bóveda</a>
+            <a href="/#caracteristicas" class="hover:text-primary-700 dark:hover:text-primary-300 transition">Características</a>
           </li>
           <li>
-            <a href="/#presupuestos" class="hover:text-primary-700 transition"
-              >Presupuestos</a>
+            <a href="/blog" class="hover:text-primary-700 dark:hover:text-primary-300 transition">Blog</a>
           </li>
           <li>
-            <a href="/#metas" class="hover:text-primary-700 transition">Metas</a>
+            <a href="/nosotros" class="hover:text-primary-700 dark:hover:text-primary-300 transition">Nosotros</a>
           </li>
           <li>
-            <a href="/#finno" class="hover:text-primary-700 transition"
-              >FINNO AI</a>
+            <a href="/contacto" class="hover:text-primary-700 dark:hover:text-primary-300 transition">Contacto</a>
           </li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-bold text-secondary mb-4">Legal</h4>
-        <ul class="space-y-2 text-sm text-slate-600">
+        <h4 class="font-bold text-secondary dark:text-white mb-4">Legal</h4>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
           <li>
             <a
               href="/terminos"
-              class="hover:text-primary-700 transition"
+              class="hover:text-primary-700 dark:hover:text-primary-300 transition"
             >Términos de Uso</a>
           </li>
           <li>
             <a
-              href="https://t.me/+UeNBzD5prKNhYmMx"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:text-primary-700 transition"
-            >Comunidad</a>
+              href="/#finno"
+              class="hover:text-primary-700 dark:hover:text-primary-300 transition"
+            >FINNO AI</a>
           </li>
         </ul>
       </div>
     </div>
 
     <div
-      class="mt-12 pt-8 border-t border-slate-200 text-center text-sm text-slate-500"
+      class="mt-12 pt-8 border-t border-slate-200 dark:border-dark-600 text-center text-sm text-slate-500 dark:text-slate-500"
     >
       <p>
         &copy; {currentYear} Tu Caja App · Mundo Pixelia C.A. Todos los derechos

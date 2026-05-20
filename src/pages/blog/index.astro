@@ -1,0 +1,139 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const WP_API = "https://wp.tucajaapp.com/wp-json/wp/v2";
+
+interface WPPost {
+  id: number;
+  slug: string;
+  date: string;
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  _embedded?: {
+    "wp:featuredmedia"?: Array<{ source_url: string; alt_text: string }>;
+    author?: Array<{ name: string; avatar_urls: Record<string, string> }>;
+  };
+}
+
+let posts: WPPost[] = [];
+let error = false;
+
+try {
+  const res = await fetch(
+    `${WP_API}/posts?_embed&per_page=12&status=publish`,
+    { headers: { Accept: "application/json" } }
+  );
+  if (res.ok) {
+    posts = await res.json();
+  } else {
+    error = true;
+  }
+} catch {
+  error = true;
+}
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<Layout title="Blog - Tu Caja App">
+  <Navbar />
+
+  <main class="relative pt-28 pb-20 min-h-screen bg-brand-gradient-soft dark:bg-brand-gradient-soft-dark overflow-hidden">
+    <!-- Decorative blobs -->
+    <div class="blob bg-primary/30 w-[28rem] h-[28rem] -top-24 -left-24 animate-float-slower"></div>
+    <div class="blob bg-accent/30 w-[22rem] h-[22rem] top-60 -right-20 animate-float-slow"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <header class="text-center mb-14 reveal">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-secondary dark:text-white mb-3 leading-tight">
+          Blog de
+          <span class="text-gradient-brand"> Tu Caja</span>
+        </h1>
+        <p class="text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
+          Consejos, guías y novedades sobre finanzas personales, ahorro e inversión.
+        </p>
+      </header>
+
+      <!-- Error state -->
+      {error && (
+        <div class="text-center py-20">
+          <p class="text-slate-500 dark:text-slate-400 text-lg">
+            No pudimos cargar los artículos. Intenta de nuevo más tarde.
+          </p>
+        </div>
+      )}
+
+      <!-- Empty state -->
+      {!error && posts.length === 0 && (
+        <div class="text-center py-20">
+          <p class="text-slate-500 dark:text-slate-400 text-lg">
+            Pronto publicaremos nuestros primeros artículos. ¡Vuelve pronto!
+          </p>
+        </div>
+      )}
+
+      <!-- Posts grid -->
+      {!error && posts.length > 0 && (
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post, i) => {
+            const thumb = post._embedded?.["wp:featuredmedia"]?.[0];
+            const author = post._embedded?.author?.[0];
+            return (
+              <article
+                class={`reveal bg-white/80 dark:bg-dark-700/60 backdrop-blur rounded-2xl border border-primary/10 dark:border-dark-600 overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex flex-col delay-${Math.min(i * 100, 400)}`}
+              >
+                {thumb && (
+                  <a href={`/blog/${post.slug}`} class="block overflow-hidden h-48 shrink-0">
+                    <img
+                      src={thumb.source_url}
+                      alt={thumb.alt_text || post.title.rendered}
+                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </a>
+                )}
+                <div class="p-5 flex flex-col flex-1">
+                  <p class="text-xs text-primary-600 dark:text-primary-400 font-medium mb-2">
+                    {formatDate(post.date)}
+                  </p>
+                  <h2 class="text-base font-bold text-secondary dark:text-white mb-2 leading-snug line-clamp-2">
+                    <a
+                      href={`/blog/${post.slug}`}
+                      class="hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+                      set:html={post.title.rendered}
+                    />
+                  </h2>
+                  <div
+                    class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 flex-1 mb-4"
+                    set:html={post.excerpt.rendered}
+                  />
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700 dark:text-primary-300 hover:gap-2.5 transition-all"
+                  >
+                    Leer artículo
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

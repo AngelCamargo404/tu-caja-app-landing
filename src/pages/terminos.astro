@@ -7,7 +7,7 @@ import Footer from "../components/Footer.astro";
 <Layout title="Términos de Uso - Tu Caja App">
   <Navbar />
 
-  <main class="relative pt-28 pb-20 bg-brand-gradient-soft overflow-hidden">
+  <main class="relative pt-28 pb-20 bg-brand-gradient-soft dark:bg-brand-gradient-soft-dark overflow-hidden">
     <!-- Decorative blobs -->
     <div
       class="blob bg-primary/30 w-[24rem] h-[24rem] -top-24 -left-24 animate-float-slower"
@@ -20,28 +20,22 @@ import Footer from "../components/Footer.astro";
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <header class="text-center mb-12 reveal">
-        <span
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur border border-primary/30 text-secondary text-xs font-semibold uppercase tracking-wider mb-4"
-        >
-          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-          Documento Legal
-        </span>
         <h1
-          class="text-4xl md:text-5xl font-extrabold text-secondary mb-3 leading-tight"
+          class="text-4xl md:text-5xl font-extrabold text-secondary dark:text-white mb-3 leading-tight"
         >
           Términos de Uso
           <span class="block text-gradient-brand">Tu Caja App</span>
         </h1>
-        <p class="text-slate-600">
+        <p class="text-slate-600 dark:text-slate-300">
           Última modificación: <strong>20/04/2026</strong>
         </p>
       </header>
 
       <article
-        class="relative bg-white/90 backdrop-blur shadow-xl shadow-secondary/10 rounded-3xl border border-primary/10 p-6 sm:p-10 lg:p-14 reveal delay-100 space-y-10 text-slate-700 leading-relaxed"
+        class="relative bg-white/90 dark:bg-dark-700/90 backdrop-blur shadow-xl shadow-secondary/10 dark:shadow-dark-900/30 rounded-3xl border border-primary/10 dark:border-dark-600 p-6 sm:p-10 lg:p-14 reveal delay-100 space-y-10 text-slate-700 dark:text-slate-200 leading-relaxed"
       >
         <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-secondary flex items-baseline gap-3">
+          <h2 class="text-2xl font-bold text-secondary dark:text-white flex items-baseline gap-3">
             <span class="text-primary text-base font-mono">1.</span>
             Introducción
           </h2>
@@ -54,10 +48,10 @@ import Footer from "../components/Footer.astro";
             alcanzar sus metas financieras.
           </p>
           <div
-            class="rounded-2xl border-l-4 border-primary bg-primary/5 p-5 text-slate-700"
+            class="rounded-2xl border-l-4 border-primary bg-primary/5 dark:bg-primary/10 p-5 text-slate-700 dark:text-slate-200"
           >
             <p>
-              <strong class="text-primary-700">IMPORTANTE:</strong> Tu Caja App
+              <strong class="text-primary-700 dark:text-primary-300">IMPORTANTE:</strong> Tu Caja App
               proporciona herramientas de gestión y tecnología avanzada que
               facilitan el control de sus finanzas, incluyendo la organización
               de gastos y la protección de datos. En este sentido, la Compañía
@@ -79,7 +73,7 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-secondary flex items-baseline gap-3">
+          <h2 class="text-2xl font-bold text-secondary dark:text-white flex items-baseline gap-3">
             <span class="text-primary text-base font-mono">2.</span>
             Definiciones
           </h2>
@@ -87,13 +81,13 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Plataforma / App:</strong> La
+                <strong class="text-secondary dark:text-white">Plataforma / App:</strong> La
                 aplicación móvil Tu Caja App, la página web
                 <a
                   href="https://www.tucajaapp.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-primary-700 hover:text-accent underline">www.tucajaapp.com</a>
+                  class="text-primary-700 dark:text-primary-300 hover:text-accent dark:hover:text-accent underline">www.tucajaapp.com</a>
                 o cualquier otro medio digital de Nosotros que permita acceder
                 a nuestras funciones.
               </span>
@@ -101,7 +95,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Servicios:</strong> El servicio
+                <strong class="text-secondary dark:text-white">Servicios:</strong> El servicio
                 integral de acceso a Tu Caja App, incluyendo todas sus
                 funcionalidades tecnológicas como la Bóveda de Seguridad, el
                 gestor de Presupuestos, el seguimiento de Metas, las
@@ -111,7 +105,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">FINNO (Asistente de IA):</strong>
+                <strong class="text-secondary dark:text-white">FINNO (Asistente de IA):</strong>
                 Herramienta de inteligencia artificial integrada en los
                 Servicios, diseñada para interactuar naturalmente con el
                 Usuario, analizar patrones de gastos y proveer recomendaciones
@@ -121,7 +115,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Bóveda de Seguridad:</strong>
+                <strong class="text-secondary dark:text-white">Bóveda de Seguridad:</strong>
                 Funcionalidad de la Plataforma destinada al almacenamiento
                 encriptado de contraseñas y documentos personales importantes
                 del Usuario.
@@ -130,7 +124,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Usuario:</strong> Persona
+                <strong class="text-secondary dark:text-white">Usuario:</strong> Persona
                 natural que se registra y adquiere una licencia de uso bajo las
                 condiciones de estos Términos.
               </span>
@@ -139,7 +133,7 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-secondary flex items-baseline gap-3">
+          <h2 class="text-2xl font-bold text-secondary dark:text-white flex items-baseline gap-3">
             <span class="text-primary text-base font-mono">3.</span>
             Aceptación y Modificaciones
           </h2>
@@ -161,7 +155,7 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-secondary flex items-baseline gap-3">
+          <h2 class="text-2xl font-bold text-secondary dark:text-white flex items-baseline gap-3">
             <span class="text-primary text-base font-mono">4.</span>
             Naturaleza de los Servicios
           </h2>
@@ -173,7 +167,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Bóveda de Seguridad:</strong>
+                <strong class="text-secondary dark:text-white">Bóveda de Seguridad:</strong>
                 Espacio digital que emplea encriptación para resguardar claves
                 bancarias y documentos personales del Usuario.
               </span>
@@ -181,7 +175,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Gestión de Presupuestos y Metas:</strong>
+                <strong class="text-secondary dark:text-white">Gestión de Presupuestos y Metas:</strong>
                 Herramientas para categorizar gastos, establecer límites,
                 recibir alertas y visualizar el progreso de objetivos de
                 ahorro.
@@ -190,7 +184,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Estadísticas e Informes:</strong>
+                <strong class="text-secondary dark:text-white">Estadísticas e Informes:</strong>
                 Generación de gráficas interactivas basadas en los datos
                 ingresados por el Usuario para facilitar la toma de decisiones.
               </span>
@@ -198,7 +192,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Asistencia Inteligente (FINNO):</strong>
+                <strong class="text-secondary dark:text-white">Asistencia Inteligente (FINNO):</strong>
                 Análisis de hábitos financieros, chat interactivo para dudas y
                 recomendaciones proactivas para optimizar el ahorro.
               </span>
@@ -207,7 +201,7 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-secondary flex items-baseline gap-3">
+          <h2 class="text-2xl font-bold text-secondary dark:text-white flex items-baseline gap-3">
             <span class="text-primary text-base font-mono">5.</span>
             Uso Permitido y Restricciones
           </h2>
@@ -217,7 +211,7 @@ import Footer from "../components/Footer.astro";
             aplicación para tu uso personal.
           </p>
           <p>
-            <strong class="text-secondary">Restricciones:</strong> El Usuario
+            <strong class="text-secondary dark:text-white">Restricciones:</strong> El Usuario
             acuerda no realizar las siguientes actividades:
           </p>
           <ul class="space-y-3 list-none pl-0">
@@ -256,7 +250,7 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-secondary flex items-baseline gap-3">
+          <h2 class="text-2xl font-bold text-secondary dark:text-white flex items-baseline gap-3">
             <span class="text-primary text-base font-mono">6.</span>
             Sobre el Asistente FINNO (Inteligencia Artificial) y Descargo de
             Responsabilidad
@@ -270,7 +264,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Fines Educativos e Informativos:</strong>
+                <strong class="text-secondary dark:text-white">Fines Educativos e Informativos:</strong>
                 Las recomendaciones generadas por FINNO tienen propósitos
                 netamente ilustrativos e informativos. No constituyen
                 asesoramiento financiero certificado, fiscal, contable ni
@@ -280,7 +274,7 @@ import Footer from "../components/Footer.astro";
             <li class="flex gap-3">
               <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
               <span>
-                <strong class="text-secondary">Decisiones del Usuario:</strong>
+                <strong class="text-secondary dark:text-white">Decisiones del Usuario:</strong>
                 El Usuario es el único responsable de las decisiones
                 financieras o compras que realice basándose en los análisis
                 proporcionados por la Plataforma o por FINNO. La Compañía no
@@ -292,7 +286,7 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-secondary flex items-baseline gap-3">
+          <h2 class="text-2xl font-bold text-secondary dark:text-white flex items-baseline gap-3">
             <span class="text-primary text-base font-mono">7.</span>
             Propiedad Intelectual
           </h2>
@@ -310,7 +304,7 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-2xl font-bold text-secondary flex items-baseline gap-3">
+          <h2 class="text-2xl font-bold text-secondary dark:text-white flex items-baseline gap-3">
             <span class="text-primary text-base font-mono">8.</span>
             Cancelación y Suspensión de Cuenta
           </h2>
@@ -328,13 +322,13 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <section class="space-y-6">
-          <h2 class="text-2xl font-bold text-secondary flex items-baseline gap-3">
+          <h2 class="text-2xl font-bold text-secondary dark:text-white flex items-baseline gap-3">
             <span class="text-primary text-base font-mono">9.</span>
             Suscripciones, Tarifas y Política de Reembolsos
           </h2>
 
           <div class="space-y-3">
-            <h3 class="text-lg font-semibold text-secondary">
+            <h3 class="text-lg font-semibold text-secondary dark:text-white">
               9.1. Modelos de Suscripción
             </h3>
             <p>
@@ -351,7 +345,7 @@ import Footer from "../components/Footer.astro";
           </div>
 
           <div class="space-y-3">
-            <h3 class="text-lg font-semibold text-secondary">
+            <h3 class="text-lg font-semibold text-secondary dark:text-white">
               9.2. Tarifas y Facturación
             </h3>
             <p>
@@ -364,7 +358,7 @@ import Footer from "../components/Footer.astro";
               <li class="flex gap-3">
                 <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
                 <span>
-                  <strong class="text-secondary">Modificación de Tarifas:</strong>
+                  <strong class="text-secondary dark:text-white">Modificación de Tarifas:</strong>
                   Mundo Pixelia C.A. se reserva el derecho de modificar los
                   precios de las suscripciones en cualquier momento. Cualquier
                   cambio en las tarifas será notificado al Usuario con
@@ -375,7 +369,7 @@ import Footer from "../components/Footer.astro";
               <li class="flex gap-3">
                 <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
                 <span>
-                  <strong class="text-secondary">Procesamiento de Pagos:</strong>
+                  <strong class="text-secondary dark:text-white">Procesamiento de Pagos:</strong>
                   Los pagos por suscripciones se procesan a través de los
                   sistemas de facturación de Apple (in-app purchases) o Google
                   Play, o mediante pasarelas de pago de terceros debidamente
@@ -388,7 +382,7 @@ import Footer from "../components/Footer.astro";
           </div>
 
           <div class="space-y-3">
-            <h3 class="text-lg font-semibold text-secondary">
+            <h3 class="text-lg font-semibold text-secondary dark:text-white">
               9.3. Renovación Automática y Cancelación
             </h3>
             <p>
@@ -401,7 +395,7 @@ import Footer from "../components/Footer.astro";
               <li class="flex gap-3">
                 <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
                 <span>
-                  <strong class="text-secondary">Cancelación:</strong> El
+                  <strong class="text-secondary dark:text-white">Cancelación:</strong> El
                   Usuario puede cancelar la renovación automática de su
                   suscripción en cualquier momento. Dado que los pagos son
                   gestionados por las tiendas de aplicaciones, la cancelación
@@ -413,7 +407,7 @@ import Footer from "../components/Footer.astro";
               <li class="flex gap-3">
                 <span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
                 <span>
-                  <strong class="text-secondary">Efectos de la Cancelación:</strong>
+                  <strong class="text-secondary dark:text-white">Efectos de la Cancelación:</strong>
                   La cancelación de la suscripción no generará el cierre de la
                   cuenta. El Usuario continuará teniendo acceso a las
                   funcionalidades Premium hasta el final del ciclo de
@@ -426,7 +420,7 @@ import Footer from "../components/Footer.astro";
           </div>
 
           <div class="space-y-3">
-            <h3 class="text-lg font-semibold text-secondary">
+            <h3 class="text-lg font-semibold text-secondary dark:text-white">
               9.4. Política de Reembolsos
             </h3>
             <p>
@@ -438,7 +432,7 @@ import Footer from "../components/Footer.astro";
               <li class="flex gap-3">
                 <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
                 <span>
-                  <strong class="text-secondary">Gestión a través de Terceros:</strong>
+                  <strong class="text-secondary dark:text-white">Gestión a través de Terceros:</strong>
                   Debido a que las transacciones financieras son procesadas
                   directamente por Apple App Store o Google Play Store, Mundo
                   Pixelia C.A. no tiene la capacidad técnica ni administrativa
@@ -449,7 +443,7 @@ import Footer from "../components/Footer.astro";
               <li class="flex gap-3">
                 <span class="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
                 <span>
-                  <strong class="text-secondary">Solicitudes de Reembolso:</strong>
+                  <strong class="text-secondary dark:text-white">Solicitudes de Reembolso:</strong>
                   Cualquier reclamo o solicitud de reembolso (incluyendo
                   aquellos por compras accidentales o renovaciones no deseadas)
                   deberá ser canalizado de forma exclusiva por el Usuario ante
@@ -464,7 +458,7 @@ import Footer from "../components/Footer.astro";
         </section>
 
         <div
-          class="pt-6 border-t border-slate-200 text-center text-sm text-slate-500"
+          class="pt-6 border-t border-slate-200 dark:border-dark-600 text-center text-sm text-slate-500 dark:text-slate-400"
         >
           <p>
             Si tienes preguntas sobre estos Términos, puedes contactarnos a
@@ -473,7 +467,7 @@ import Footer from "../components/Footer.astro";
               href="https://www.tucajaapp.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-primary-700 hover:text-accent underline"
+              class="text-primary-700 dark:text-primary-300 hover:text-accent dark:hover:text-accent underline"
               >www.tucajaapp.com</a>.
           </p>
         </div>
