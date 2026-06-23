@@ -62,9 +62,9 @@ const heroLayers = [
   <div class="blob bg-secondary/20 w-[18rem] h-[18rem] bottom-0 left-1/3 animate-float-slower"></div>
 
   <div class="hero-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="hero-grid grid md:grid-cols-2 gap-6 md:gap-8 relative">
+    <div class="hero-grid grid md:grid-cols-2 gap-6 md:gap-8 relative min-w-0">
       <!-- Left: Text content -->
-      <div class="hero-copy text-center md:text-left z-10 relative md:max-w-xl">
+      <div class="hero-copy text-center md:text-left z-10 relative md:max-w-xl min-w-0 w-full">
         <div class="brand-lockup inline-flex items-center gap-3 mb-6 reveal delay-100">
           <span class="brand-logo-badge">
             <Image src={logoImage} alt="Tu Caja App" class="h-7 w-auto" loading="eager" />
@@ -87,7 +87,7 @@ const heroLayers = [
       </div>
 
       <!-- Right: Stacked screenshots — pinned to section bottom, 70% visible -->
-      <div class="hero-stack-column relative mx-auto md:mx-0 reveal-scale delay-500 flex justify-center md:justify-end">
+      <div class="hero-stack-column relative mx-auto md:mx-0 reveal-scale delay-500 flex justify-center md:justify-end min-w-0 w-full max-w-full">
         <div class="hero-stack-stage">
           <div class="hero-stack-viewport">
             <!-- Decorative glow behind stack -->
@@ -137,6 +137,13 @@ const heroLayers = [
     --stack-width: 260px;
     --stack-spread: 4rem;
     --stack-visible-height: calc(var(--stack-width) * 19.5 / 9 * 0.7);
+  }
+
+  @media (max-width: 767px) {
+    .hero-shell {
+      --stack-width: min(220px, 100%);
+      --stack-spread: 0.75rem;
+    }
   }
 
   .hero-copy {

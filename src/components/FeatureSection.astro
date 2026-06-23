@@ -84,12 +84,12 @@ const iconPaths: Record<HighlightIcon, string> = {
   </div>
 
   <div
-    class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12 lg:gap-24"
+    class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12 lg:gap-24 min-w-0"
     class:list={[reversed ? "lg:flex-row-reverse" : "lg:flex-row"]}
   >
     <div
       class:list={[
-        "flex-1 space-y-8 text-center lg:text-left",
+        "flex-1 space-y-8 text-center lg:text-left min-w-0 w-full",
         reversed ? "reveal-right" : "reveal-left",
       ]}
     >
