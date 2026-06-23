@@ -1,99 +1,47 @@
 ---
-import { Image } from "astro:assets";
-import captura1 from "../assets/images/Captura1.png";
-import captura2 from "../assets/images/Captura2.png";
-import categorias from "../assets/images/Categorias.png";
-import listaDeseos from "../assets/images/Lista-deseos.png";
-import presupuestos from "../assets/images/apartado-presupuestos.png";
-import boveda from "../assets/images/boveda-seguridad.png";
+import PhoneMockup from "./PhoneMockup.astro";
+
+// iOS — light theme screenshots
+import iosResumenLight from "../assets/images/ios-resumen-light.png";
+import iosComprasLight from "../assets/images/ios-compras-light.png";
+import iosCalculadoraLight from "../assets/images/ios-calculadora-light.png";
+import iosGastosLight from "../assets/images/ios-gastos-light.png";
+import iosMonedasLight from "../assets/images/ios-monedas-light.png";
+import iosCategoriasLight from "../assets/images/ios-categorias-light.png";
+
+// iOS — dark theme screenshots
+import iosResumenDark from "../assets/images/ios-resumen-dark.png";
+import iosComprasDark from "../assets/images/ios-compras-dark.png";
+import iosCalculadoraDark from "../assets/images/ios-calculadora-dark.png";
+import iosGastosDark from "../assets/images/ios-gastos-dark.png";
+import iosMonedasDark from "../assets/images/ios-monedas-dark.png";
+import iosCategoriasDark from "../assets/images/ios-categorias-dark.png";
 
 const iosScreens = [
-  { src: captura2, alt: "Pantalla principal", caption: "Resumen general" },
-  { src: presupuestos, alt: "Presupuestos", caption: "Presupuestos" },
-  { src: boveda, alt: "Bóveda de seguridad", caption: "Bóveda segura" },
-  { src: listaDeseos, alt: "Lista de deseos", caption: "Metas y deseos" },
-  { src: categorias, alt: "Categorías", caption: "Categorías" },
-  { src: captura1, alt: "Estadísticas", caption: "Estadísticas" },
+  { light: iosResumenLight, dark: iosResumenDark, alt: "Resumen general", caption: "Resumen general" },
+  { light: iosCategoriasLight, dark: iosCategoriasDark, alt: "Gastos por categoría", caption: "Gastos por categoría" },
+  { light: iosComprasLight, dark: iosComprasDark, alt: "Lista de compras", caption: "Lista de compras" },
+  { light: iosCalculadoraLight, dark: iosCalculadoraDark, alt: "Calculadora de divisas", caption: "Calculadora de divisas" },
+  { light: iosGastosLight, dark: iosGastosDark, alt: "Gastos programados", caption: "Gastos programados" },
+  { light: iosMonedasLight, dark: iosMonedasDark, alt: "Tasas de cambio", caption: "Tasas de cambio" },
 ];
 
+// Android — capturas en camino (placeholder "Próximamente")
 const androidScreens = [
   { caption: "Resumen general" },
-  { caption: "Presupuestos" },
-  { caption: "Bóveda segura" },
-  { caption: "Metas y deseos" },
-  { caption: "Categorías" },
-  { caption: "Estadísticas" },
+  { caption: "Gastos por categoría" },
+  { caption: "Lista de compras" },
+  { caption: "Calculadora de divisas" },
+  { caption: "Gastos programados" },
+  { caption: "Tasas de cambio" },
 ];
 ---
 
 <section
   id="capturas"
-  class="relative py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark-700 overflow-hidden"
+  class="relative px-4 sm:px-6 lg:px-8 pt-4 md:pt-6 pb-28 md:pb-32 overflow-hidden"
 >
-  <!-- Decorative blurs -->
-  <div
-    class="absolute -top-24 -left-24 w-96 h-96 bg-primary/15 dark:bg-primary/20 rounded-full blur-3xl pointer-events-none"
-  >
-  </div>
-  <div
-    class="absolute -bottom-24 -right-24 w-96 h-96 bg-accent/15 dark:bg-accent/20 rounded-full blur-3xl pointer-events-none"
-  >
-  </div>
-
   <div class="relative max-w-7xl mx-auto z-10">
-    <!-- Header -->
-    <div class="text-center mb-10 reveal">
-      <h2
-        class="text-3xl md:text-4xl font-bold text-secondary dark:text-white"
-      >
-        Diseñada para tu plataforma favorita
-      </h2>
-      <p
-        class="mt-3 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
-      >
-        Explora capturas reales de Tu Caja App en acción. Cambia entre iOS y
-        Android para ver cómo luce en tu dispositivo.
-      </p>
-    </div>
-
-    <!-- OS Tabs -->
-    <div class="flex justify-center mb-10 reveal delay-100">
-      <div
-        role="tablist"
-        aria-label="Selector de sistema operativo"
-        class="inline-flex p-1.5 rounded-full bg-slate-100 dark:bg-dark-800 border border-slate-200 dark:border-dark-500 shadow-sm"
-      >
-        <button
-          type="button"
-          role="tab"
-          id="os-tab-ios"
-          aria-selected="true"
-          aria-controls="os-panel-ios"
-          data-os="ios"
-          class="os-tab inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-full text-sm font-semibold transition-all duration-300"
-        >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"></path>
-          </svg>
-          iOS
-        </button>
-        <button
-          type="button"
-          role="tab"
-          id="os-tab-android"
-          aria-selected="false"
-          aria-controls="os-panel-android"
-          data-os="android"
-          class="os-tab inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-full text-sm font-semibold transition-all duration-300"
-        >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.6 9.48l1.84-3.18a.39.39 0 00-.13-.55.4.4 0 00-.55.13L16.9 9.09a11.45 11.45 0 00-9.8 0L5.24 5.88a.4.4 0 00-.55-.13.39.39 0 00-.13.55L6.4 9.48A10.93 10.93 0 001 18h22a10.93 10.93 0 00-5.4-8.52zM7 15.25a.93.93 0 11.93-.93.93.93 0 01-.93.93zm10 0a.93.93 0 11.93-.93.93.93 0 01-.93.93z"></path>
-          </svg>
-          Android
-        </button>
-      </div>
-    </div>
-
     <!-- Slider container -->
     <div class="relative">
       <!-- iOS Panel -->
@@ -101,7 +49,7 @@ const androidScreens = [
         id="os-panel-ios"
         role="tabpanel"
         aria-labelledby="os-tab-ios"
-        class="os-panel"
+        class="os-panel hidden"
         data-os="ios"
       >
         <div class="screenshot-slider relative">
@@ -129,17 +77,12 @@ const androidScreens = [
               {
                 iosScreens.map((screen, i) => (
                   <li class="slider-slide" data-index={i}>
-                    <div class="phone-frame group">
-                      <div class="phone-notch" />
-                      <div class="phone-screen">
-                        <Image
-                          src={screen.src}
-                          alt={screen.alt}
-                          class="absolute inset-0 w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
+                    <PhoneMockup
+                      imageSrc={screen.light}
+                      imageSrcDark={screen.dark}
+                      imageAlt={screen.alt}
+                      loading="lazy"
+                    />
                     <p class="slide-caption">{screen.caption}</p>
                   </li>
                 ))
@@ -147,8 +90,7 @@ const androidScreens = [
             </ul>
           </div>
 
-          <!-- Dots -->
-          <div class="slider-dots" role="tablist" aria-label="Selector de captura">
+          <div class="slider-dots" role="group" aria-label="Selector de captura">
             {
               iosScreens.map((_, i) => (
                 <button
@@ -168,7 +110,7 @@ const androidScreens = [
         id="os-panel-android"
         role="tabpanel"
         aria-labelledby="os-tab-android"
-        class="os-panel hidden"
+        class="os-panel"
         data-os="android"
       >
         <div class="screenshot-slider relative">
@@ -196,19 +138,16 @@ const androidScreens = [
               {
                 androidScreens.map((screen, i) => (
                   <li class="slider-slide" data-index={i}>
-                    <div class="phone-frame phone-frame-android">
-                      <div class="phone-camera-hole" />
-                      <div class="phone-screen phone-screen-android">
-                        <div class="android-placeholder">
-                          <svg class="w-12 h-12 opacity-30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M17.6 9.48l1.84-3.18a.39.39 0 00-.13-.55.4.4 0 00-.55.13L16.9 9.09a11.45 11.45 0 00-9.8 0L5.24 5.88a.4.4 0 00-.55-.13.39.39 0 00-.13.55L6.4 9.48A10.93 10.93 0 001 18h22a10.93 10.93 0 00-5.4-8.52zM7 15.25a.93.93 0 11.93-.93.93.93 0 01-.93.93zm10 0a.93.93 0 11.93-.93.93.93 0 01-.93.93z"></path>
-                          </svg>
-                          <p class="mt-3 text-xs font-medium tracking-wide uppercase opacity-50">
-                            Próximamente
-                          </p>
-                        </div>
+                    <PhoneMockup variant="android">
+                      <div class="android-placeholder">
+                        <svg class="w-12 h-12 opacity-30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                          <path d="M17.6 9.48l1.84-3.18a.39.39 0 00-.13-.55.4.4 0 00-.55.13L16.9 9.09a11.45 11.45 0 00-9.8 0L5.24 5.88a.4.4 0 00-.55-.13.39.39 0 00-.13.55L6.4 9.48A10.93 10.93 0 001 18h22a10.93 10.93 0 00-5.4-8.52zM7 15.25a.93.93 0 11.93-.93.93.93 0 01-.93.93zm10 0a.93.93 0 11.93-.93.93.93 0 01-.93.93z"></path>
+                        </svg>
+                        <p class="mt-3 text-xs font-medium tracking-wide uppercase opacity-50">
+                          Próximamente
+                        </p>
                       </div>
-                    </div>
+                    </PhoneMockup>
                     <p class="slide-caption">{screen.caption}</p>
                   </li>
                 ))
@@ -216,7 +155,7 @@ const androidScreens = [
             </ul>
           </div>
 
-          <div class="slider-dots" role="tablist" aria-label="Selector de captura">
+          <div class="slider-dots" role="group" aria-label="Selector de captura">
             {
               androidScreens.map((_, i) => (
                 <button
@@ -234,6 +173,59 @@ const androidScreens = [
           La versión de Android está en camino. Pronto compartiremos capturas
           oficiales por aquí.
         </p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="text-center mt-12 md:mt-14 reveal">
+      <h2
+        class="section-heading text-3xl md:text-4xl font-bold text-secondary dark:text-white"
+      >
+        Diseñada para tu plataforma favorita
+      </h2>
+      <p
+        class="mt-3 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
+      >
+        Explora capturas reales de Tu Caja App en acción. Cambia entre iOS y
+        Android para ver cómo luce en tu dispositivo.
+      </p>
+    </div>
+
+    <!-- OS Tabs -->
+    <div class="flex justify-center mt-8 reveal delay-100">
+      <div
+        role="tablist"
+        aria-label="Selector de sistema operativo"
+        class="inline-flex p-1.5 rounded-full bg-slate-100 dark:bg-dark-800 border border-slate-200 dark:border-dark-500 shadow-sm"
+      >
+        <button
+          type="button"
+          role="tab"
+          id="os-tab-ios"
+          aria-selected="false"
+          aria-controls="os-panel-ios"
+          data-os="ios"
+          class="os-tab inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-full text-sm font-semibold transition-all duration-300"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"></path>
+          </svg>
+          iOS
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="os-tab-android"
+          aria-selected="true"
+          aria-controls="os-panel-android"
+          data-os="android"
+          class="os-tab inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 rounded-full text-sm font-semibold transition-all duration-300"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.6 9.48l1.84-3.18a.39.39 0 00-.13-.55.4.4 0 00-.55.13L16.9 9.09a11.45 11.45 0 00-9.8 0L5.24 5.88a.4.4 0 00-.55-.13.39.39 0 00-.13.55L6.4 9.48A10.93 10.93 0 001 18h22a10.93 10.93 0 00-5.4-8.52zM7 15.25a.93.93 0 11.93-.93.93.93 0 01-.93.93zm10 0a.93.93 0 11.93-.93.93.93 0 01-.93.93z"></path>
+          </svg>
+          Android
+        </button>
       </div>
     </div>
   </div>
@@ -262,13 +254,13 @@ const androidScreens = [
   /* ── Slider container ────────────────────── */
   .screenshot-slider {
     position: relative;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
   }
 
   .slider-track-wrapper {
     overflow: hidden;
-    padding: 2rem 0 1rem;
-    perspective: 1200px;
+    padding: 3rem 0 1.5rem;
+    perspective: 1400px;
   }
 
   .slider-track {
@@ -278,7 +270,7 @@ const androidScreens = [
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(0.75rem, 3vw, 2.5rem);
+    gap: clamp(1rem, 4vw, 3.5rem);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
   }
@@ -292,86 +284,30 @@ const androidScreens = [
       transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
       opacity 0.55s ease,
       filter 0.55s ease;
-    opacity: 0.45;
-    transform: scale(0.82);
-    filter: blur(1px);
+    opacity: 0.4;
+    transform: scale(0.84);
+    filter: blur(1.5px);
   }
 
   .slider-slide[data-active="true"] {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1.04);
     filter: blur(0);
     z-index: 5;
   }
 
   .slider-slide[data-adjacent="true"] {
-    opacity: 0.72;
-    transform: scale(0.9);
+    opacity: 0.75;
+    transform: scale(0.93);
     filter: blur(0);
   }
 
-  /* ── Phone frame ─────────────────────────── */
-  .phone-frame {
-    position: relative;
-    width: clamp(180px, 30vw, 260px);
-    aspect-ratio: 9 / 19.5;
-    background: #0a0e13;
-    border-radius: 2.25rem;
-    padding: 0.55rem;
+  /* ── Phone frame (carousel active state) ─── */
+  .slider-slide[data-active="true"] :global(.phone-frame) {
     box-shadow:
-      0 25px 50px -12px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.06) inset;
-    transition: transform 0.4s ease;
-  }
-
-  .slider-slide[data-active="true"] .phone-frame {
-    box-shadow:
-      0 30px 60px -15px rgba(49, 176, 153, 0.35),
-      0 25px 50px -12px rgba(0, 0, 0, 0.45),
-      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
-  }
-
-  .phone-screen {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 1.75rem;
-    overflow: hidden;
-    background: #10161E;
-  }
-
-  .phone-notch {
-    position: absolute;
-    top: 0.55rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 38%;
-    height: 1.1rem;
-    background: #0a0e13;
-    border-bottom-left-radius: 0.9rem;
-    border-bottom-right-radius: 0.9rem;
-    z-index: 2;
-  }
-
-  /* Android variant */
-  .phone-frame-android {
-    border-radius: 1.75rem;
-  }
-  .phone-screen-android {
-    border-radius: 1.35rem;
-    background: linear-gradient(160deg, #0f1b31 0%, #08111d 100%);
-  }
-  .phone-camera-hole {
-    position: absolute;
-    top: 0.9rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 9999px;
-    background: #0a0e13;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.04);
-    z-index: 2;
+      0 18px 36px -18px rgba(49, 176, 153, 0.3),
+      0 14px 28px -14px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
   }
 
   .android-placeholder {
@@ -392,24 +328,34 @@ const androidScreens = [
   }
 
   .slide-caption {
-    margin-top: 1.1rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: rgb(71 85 105);
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #134e4a;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(49, 176, 153, 0.25);
+    box-shadow: 0 6px 18px -8px rgba(34, 57, 107, 0.3);
+    backdrop-filter: blur(8px);
     text-align: center;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(6px) scale(0.96);
     transition:
       opacity 0.4s ease,
       transform 0.4s ease;
   }
   :global(.dark) .slide-caption {
-    color: rgb(203 213 225);
+    color: #ccfbf1;
+    background: rgba(15, 27, 49, 0.8);
+    border-color: rgba(49, 176, 153, 0.35);
+    box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.6);
   }
   .slider-slide[data-active="true"] .slide-caption {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 
   /* ── Arrows ──────────────────────────────── */
@@ -422,8 +368,8 @@ const androidScreens = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 9999px;
     background: rgba(255, 255, 255, 0.85);
     color: #22396B;
@@ -456,10 +402,18 @@ const androidScreens = [
   }
   @media (min-width: 768px) {
     .slider-prev {
-      left: 1rem;
+      left: 0.25rem;
     }
     .slider-next {
-      right: 1rem;
+      right: 0.25rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .slider-prev {
+      left: 1.5rem;
+    }
+    .slider-next {
+      right: 1.5rem;
     }
   }
 
@@ -471,21 +425,30 @@ const androidScreens = [
     margin-top: 1.5rem;
   }
   .slider-dot {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .slider-dot::before {
+    content: "";
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 9999px;
     background: rgb(203 213 225);
-    border: none;
-    cursor: pointer;
     transition:
       width 0.3s ease,
       background-color 0.3s ease;
-    padding: 0;
   }
-  :global(.dark) .slider-dot {
+  :global(.dark) .slider-dot::before {
     background: rgb(57 63 77);
   }
-  .slider-dot[data-active="true"] {
+  .slider-dot[data-active="true"]::before {
     width: 1.75rem;
     background: linear-gradient(90deg, #31B099, #29ABE2);
   }

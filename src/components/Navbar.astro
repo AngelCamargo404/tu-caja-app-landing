@@ -12,7 +12,7 @@ const links = [
 
 <nav
   id="main-nav"
-  class="fixed w-full z-50 transition-all duration-300"
+  class="fixed w-full z-50 transition-all duration-300 font-sans"
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Desktop row -->
@@ -42,8 +42,8 @@ const links = [
         }
       </div>
 
-      <!-- Right: theme toggle only -->
-      <div class="flex items-center">
+      <!-- Right: theme toggle + mobile menu button -->
+      <div class="flex items-center gap-1">
         <button
           id="theme-toggle"
           class="text-slate-600 dark:text-slate-200 hover:text-primary-600 dark:hover:text-primary-300 transition-colors p-1.5 rounded-lg"
@@ -59,17 +59,33 @@ const links = [
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         </button>
+
+        <!-- Mobile menu toggle -->
+        <button
+          id="mobile-menu-toggle"
+          class="md:hidden text-slate-700 dark:text-white hover:text-primary-600 dark:hover:text-primary-300 transition-colors p-1.5 rounded-lg"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-close-icon" class="hidden w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
     </div>
 
-    <!-- Mobile links row -->
-    <div class="md:hidden pb-3">
-      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm">
+    <!-- Mobile dropdown menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden">
+      <div class="mobile-menu-panel mt-1 mb-3 p-2 rounded-2xl flex flex-col">
         {
           links.map((link) => (
             <a
               href={link.href}
-              class="text-slate-700 dark:text-white hover:text-primary-700 dark:hover:text-primary-300 transition-colors font-semibold text-sm tracking-wide"
+              class="mobile-menu-link px-4 py-3 rounded-xl text-slate-700 dark:text-white font-semibold text-[15px] tracking-wide"
             >
               {link.text}
             </a>
@@ -97,6 +113,32 @@ const links = [
   }
   window.addEventListener('scroll', updateNavScroll, { passive: true });
   updateNavScroll();
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-open-icon');
+  const closeIcon = document.getElementById('menu-close-icon');
+
+  function setMenu(open: boolean) {
+    if (!mobileMenu || !menuToggle) return;
+    mobileMenu.classList.toggle('open', open);
+    menuToggle.classList.toggle('is-open', open);
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    openIcon?.classList.toggle('hidden', open);
+    closeIcon?.classList.toggle('hidden', !open);
+  }
+
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    setMenu(!isOpen);
+  });
+
+  // Close menu when a link is tapped
+  mobileMenu?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => setMenu(false));
+  });
 </script>
 
 <style>
@@ -114,5 +156,87 @@ const links = [
     background: rgba(10, 14, 19, 0.88);
     border-bottom-color: rgba(49, 176, 153, 0.12);
     box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.35);
+  }
+
+  /* ── Mobile dropdown ─────────────────────── */
+  .mobile-menu {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s ease,
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .mobile-menu.open {
+    max-height: 22rem;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered link reveal */
+  .mobile-menu-link {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .mobile-menu.open .mobile-menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .mobile-menu.open .mobile-menu-link:nth-child(1) { transition-delay: 0.08s; }
+  .mobile-menu.open .mobile-menu-link:nth-child(2) { transition-delay: 0.14s; }
+  .mobile-menu.open .mobile-menu-link:nth-child(3) { transition-delay: 0.2s; }
+  .mobile-menu.open .mobile-menu-link:nth-child(4) { transition-delay: 0.26s; }
+
+  /* Hamburger icon micro-animation */
+  #mobile-menu-toggle.is-open #menu-close-icon {
+    animation: icon-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes icon-pop {
+    0% {
+      transform: rotate(-90deg) scale(0.6);
+      opacity: 0;
+    }
+    100% {
+      transform: rotate(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu,
+    .mobile-menu-link,
+    #mobile-menu-toggle svg {
+      transition: none !important;
+    }
+  }
+
+  .mobile-menu-panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(49, 176, 153, 0.18);
+    box-shadow: 0 12px 30px -12px rgba(15, 23, 42, 0.25);
+  }
+  :global(.dark) .mobile-menu-panel {
+    background: rgba(16, 22, 30, 0.95);
+    border-color: rgba(49, 176, 153, 0.18);
+    box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+  }
+  .mobile-menu-link:hover,
+  .mobile-menu-link:focus-visible {
+    background: rgba(49, 176, 153, 0.1);
+    color: #1e7e6c;
+  }
+  :global(.dark) .mobile-menu-link:hover,
+  :global(.dark) .mobile-menu-link:focus-visible {
+    background: rgba(49, 176, 153, 0.16);
+    color: #7fe3cf;
   }
 </style>

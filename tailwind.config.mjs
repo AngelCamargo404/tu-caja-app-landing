@@ -4,6 +4,10 @@ export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ['var(--font-body)'],
+				display: ['var(--font-display)'],
+			},
 			colors: {
 				// Tu Caja App brand palette
 				primary: {

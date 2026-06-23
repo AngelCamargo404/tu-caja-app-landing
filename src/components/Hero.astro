@@ -1,200 +1,276 @@
 ---
-import DownloadButtons from "./DownloadButtons.astro";
 import { Image } from "astro:assets";
-import mascotHead from "../assets/images/MASCOTA HEAD.png";
-import heroImage from "../assets/images/Captura2.png";
-import feature1 from "../assets/images/boveda-seguridad.png";
-import feature2 from "../assets/images/apartado-presupuestos.png";
-import feature3 from "../assets/images/Lista-deseos.png";
-import feature4 from "../assets/images/Captura1.png";
+import DownloadButtons from "./DownloadButtons.astro";
+import PhoneMockup from "./PhoneMockup.astro";
+import logoImage from "../assets/images/LOGO CAJA.png";
+
+// iOS — light theme screenshots
+import iosResumenLight from "../assets/images/ios-resumen-light.png";
+import iosCalculadoraLight from "../assets/images/ios-calculadora-light.png";
+import iosGastosLight from "../assets/images/ios-gastos-light.png";
+import iosMonedasLight from "../assets/images/ios-monedas-light.png";
+import iosCategoriasLight from "../assets/images/ios-categorias-light.png";
+
+// iOS — dark theme screenshots
+import iosResumenDark from "../assets/images/ios-resumen-dark.png";
+import iosCalculadoraDark from "../assets/images/ios-calculadora-dark.png";
+import iosGastosDark from "../assets/images/ios-gastos-dark.png";
+import iosMonedasDark from "../assets/images/ios-monedas-dark.png";
+import iosCategoriasDark from "../assets/images/ios-categorias-dark.png";
+
+// Front-to-back stack. The first item is the main (front) screenshot.
+const heroMain = { light: iosResumenLight, dark: iosResumenDark };
+const heroLayers = [
+  {
+    light: iosGastosLight,
+    dark: iosGastosDark,
+    shadow: "shadow-xl",
+    style:
+      "opacity: 0.65; transform: rotate(-3deg) translateX(-38px) translateY(3px) scale(0.97); z-index: 4;",
+  },
+  {
+    light: iosCategoriasLight,
+    dark: iosCategoriasDark,
+    shadow: "shadow-lg",
+    style:
+      "opacity: 0.45; transform: rotate(5deg) translateX(55px) translateY(5px) scale(0.94); z-index: 3;",
+  },
+  {
+    light: iosCalculadoraLight,
+    dark: iosCalculadoraDark,
+    shadow: "shadow-lg",
+    style:
+      "opacity: 0.28; transform: rotate(-8deg) translateX(-80px) translateY(12px) scale(0.90); z-index: 2;",
+  },
+  {
+    light: iosMonedasLight,
+    dark: iosMonedasDark,
+    shadow: "shadow-lg",
+    style:
+      "opacity: 0.18; transform: rotate(11deg) translateX(90px) translateY(10px) scale(0.88); z-index: 1;",
+  },
+];
 ---
 
 <section
   id="inicio"
-  class="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-brand-gradient-soft dark:bg-brand-gradient-soft-dark overflow-hidden"
+  class="relative pt-28 sm:pt-32 pb-0 px-4 sm:px-6 lg:px-8 overflow-hidden"
 >
   <!-- Decorative animated blobs in brand colors -->
   <div class="blob bg-primary/40 w-[28rem] h-[28rem] -top-32 -left-24 animate-float-slower"></div>
   <div class="blob bg-accent/40 w-[24rem] h-[24rem] top-20 -right-20 animate-float-slow"></div>
   <div class="blob bg-secondary/20 w-[18rem] h-[18rem] bottom-0 left-1/3 animate-float-slower"></div>
 
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
-    <!-- Left: Text content -->
-    <div class="text-center lg:text-left z-10 relative">
-      <!-- Mascot Image -->
-      <div
-        id="finno-head"
-        class="w-32 h-32 mx-auto lg:mx-0 mb-2 lg:absolute lg:-top-32 lg:mb-0 z-20 reveal-scale"
-        style="will-change: transform;"
-      >
-        <Image
-          src={mascotHead}
-          alt="Finno Mascot"
-          class="w-full h-full object-contain drop-shadow-[0_10px_18px_rgba(34,57,107,0.28)]"
-        />
+  <div class="hero-shell max-w-7xl mx-auto relative z-10">
+    <div class="hero-grid grid md:grid-cols-2 gap-6 md:gap-8 relative">
+      <!-- Left: Text content -->
+      <div class="hero-copy text-center md:text-left z-10 relative md:max-w-xl">
+        <div class="brand-lockup inline-flex items-center gap-3 mb-6 reveal delay-100">
+          <span class="brand-logo-badge">
+            <Image src={logoImage} alt="Tu Caja App" class="h-7 w-auto" loading="eager" />
+          </span>
+          <span class="brand-wordmark">
+            Tu Caja App
+          </span>
+        </div>
+        <h1 class="section-heading text-[2.5rem] sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-secondary dark:text-white mb-5 sm:mb-6 reveal delay-100">
+          Tus finanzas, <br class="sm:hidden" /><span class="text-gradient-brand">bajo control.</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto md:mx-0 reveal delay-200">
+          Gestiona tu dinero, guarda tus contraseñas y cumple tus metas con la
+          ayuda de <span class="font-semibold text-primary-700 dark:text-primary-300">FINNO</span>, tu
+          asistente financiero personal con IA.
+        </p>
+        <div class="reveal delay-300">
+          <DownloadButtons />
+        </div>
       </div>
 
-      <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight text-secondary dark:text-white mb-6 leading-tight reveal delay-100">
-        Tus finanzas, <br class="sm:hidden" /><span class="whitespace-nowrap inline-block"><span
-          id="typewriter-text"
-          class="text-gradient-brand"
-        ></span><span
-          id="typewriter-cursor"
-          class="text-gradient-brand select-none"
-          aria-hidden="true"
-        >|</span></span>
-      </h1>
-      <p class="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 reveal delay-200">
-        Gestiona tu dinero, guarda tus contraseñas y cumple tus metas con la
-        ayuda de <span class="font-semibold text-primary-700 dark:text-primary-300">FINNO</span>, tu
-        asistente financiero personal con IA.
-      </p>
-      <div class="reveal delay-300">
-        <DownloadButtons />
-      </div>
-    </div>
+      <!-- Right: Stacked screenshots — pinned to section bottom, 70% visible -->
+      <div class="hero-stack-column relative mx-auto md:mx-0 reveal-scale delay-500 flex justify-center md:justify-end">
+        <div class="hero-stack-stage">
+          <div class="hero-stack-viewport">
+            <!-- Decorative glow behind stack -->
+            <div class="hero-stack-glow" aria-hidden="true"></div>
 
-    <!-- Right: Stacked screenshots (no phone frames) -->
-    <div
-      class="relative mx-auto lg:ml-auto w-full max-w-xs md:max-w-sm lg:max-w-md reveal-scale delay-500 flex justify-center items-center"
-      style="padding: 2rem 4rem;"
-    >
-      <!-- Decorative glow behind stack -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[70%] bg-gradient-to-tr from-primary/40 via-accent/40 to-secondary/30 rounded-full blur-3xl opacity-70 -z-10"></div>
+            <!-- Stack container -->
+            <div class="relative hero-stack-container">
+              <!-- Background fanned layers (back → front) -->
+              {
+                heroLayers.map((layer) => (
+                  <div
+                    class={`absolute inset-0 ${layer.shadow}`}
+                    style={layer.style}
+                  >
+                    <PhoneMockup
+                      imageSrc={layer.light}
+                      imageSrcDark={layer.dark}
+                      imageAlt=""
+                      size="fill"
+                      loading="eager"
+                    />
+                  </div>
+                ))
+              }
 
-      <!-- Stack container -->
-      <div class="relative hero-stack-container">
-
-        <!-- Layer 4 — far back, right -->
-        <div
-          class="absolute inset-0 rounded-2xl overflow-hidden shadow-lg"
-          style="opacity: 0.18; transform: rotate(11deg) translateX(90px) translateY(10px) scale(0.88); z-index: 1;"
-        >
-          <Image src={feature4} alt="" class="w-full h-full object-cover" loading="eager" />
+              <!-- Main image — front, fully visible, static -->
+              <div class="absolute inset-0" style="z-index: 5;">
+                <PhoneMockup
+                  imageSrc={heroMain.light}
+                  imageSrcDark={heroMain.dark}
+                  imageAlt="Tu Caja App Screenshot"
+                  size="fill"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-
-        <!-- Layer 3 — back, left -->
-        <div
-          class="absolute inset-0 rounded-2xl overflow-hidden shadow-lg"
-          style="opacity: 0.28; transform: rotate(-8deg) translateX(-80px) translateY(12px) scale(0.90); z-index: 2;"
-        >
-          <Image src={feature3} alt="" class="w-full h-full object-cover" loading="eager" />
-        </div>
-
-        <!-- Layer 2 — mid, right -->
-        <div
-          class="absolute inset-0 rounded-2xl overflow-hidden shadow-lg"
-          style="opacity: 0.45; transform: rotate(5deg) translateX(55px) translateY(5px) scale(0.94); z-index: 3;"
-        >
-          <Image src={feature2} alt="" class="w-full h-full object-cover" loading="eager" />
-        </div>
-
-        <!-- Layer 1 — near, left -->
-        <div
-          class="absolute inset-0 rounded-2xl overflow-hidden shadow-xl"
-          style="opacity: 0.65; transform: rotate(-3deg) translateX(-38px) translateY(3px) scale(0.97); z-index: 4;"
-        >
-          <Image src={feature1} alt="" class="w-full h-full object-cover" loading="eager" />
-        </div>
-
-        <!-- Main image — front, fully visible, static -->
-        <div
-          class="relative rounded-2xl overflow-hidden shadow-2xl"
-          style="z-index: 5;"
-        >
-          <Image
-            src={heroImage}
-            alt="Tu Caja App Screenshot"
-            class="w-full h-full object-cover"
-            loading="eager"
-          />
-        </div>
-
       </div>
     </div>
   </div>
 </section>
 
-<script>
-  // ── Typewriter effect for hero heading ─────────────────────────
-  const phrases = [
-    'bajo control.',
-    'simplificadas.',
-    'en tus manos.',
-    'al siguiente nivel.',
-  ];
-
-  const textEl = document.getElementById('typewriter-text');
-  const cursorEl = document.getElementById('typewriter-cursor');
-
-  if (textEl && cursorEl) {
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
-
-    const TYPING_SPEED = 75;
-    const DELETE_SPEED = 38;
-    const PAUSE_AFTER_TYPE = 2200;
-    const PAUSE_AFTER_DELETE = 350;
-
-    cursorEl.style.animation = 'tw-blink 0.75s step-end infinite';
-
-    function tick() {
-      const currentPhrase = phrases[phraseIndex];
-
-      if (!isDeleting) {
-        charIndex++;
-        textEl.textContent = currentPhrase.slice(0, charIndex);
-
-        if (charIndex === currentPhrase.length) {
-          isPaused = true;
-          setTimeout(() => {
-            isPaused = false;
-            isDeleting = true;
-            setTimeout(tick, DELETE_SPEED);
-          }, PAUSE_AFTER_TYPE);
-          return;
-        }
-      } else {
-        charIndex--;
-        textEl.textContent = currentPhrase.slice(0, charIndex);
-
-        if (charIndex === 0) {
-          isDeleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(tick, PAUSE_AFTER_DELETE);
-          return;
-        }
-      }
-
-      setTimeout(tick, isDeleting ? DELETE_SPEED : TYPING_SPEED);
-    }
-
-    setTimeout(tick, 800);
-  }
-</script>
-
 <style>
-  @keyframes tw-blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
+  .hero-shell {
+    --stack-width: 260px;
+    --stack-spread: 4rem;
+    --stack-visible-height: calc(var(--stack-width) * 19.5 / 9 * 0.7);
   }
 
-  .hero-stack-container {
-    width: 260px;
-    aspect-ratio: 9 / 19;
+  .hero-copy {
+    padding-bottom: 2.5rem;
+  }
+
+  /* ── Brand lockup ──────────────────────────── */
+  .brand-lockup {
+    padding: 0.35rem 1rem 0.35rem 0.35rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(49, 176, 153, 0.25);
+    box-shadow: 0 6px 18px -8px rgba(34, 57, 107, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  :global(.dark) .brand-lockup {
+    background: rgba(16, 22, 30, 0.6);
+    border-color: rgba(49, 176, 153, 0.35);
+    box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.5);
+  }
+
+  .brand-logo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    background: #ffffff;
+    border: 1px solid rgba(49, 176, 153, 0.2);
+    box-shadow: 0 4px 12px -4px rgba(34, 57, 107, 0.3);
+  }
+
+  .brand-wordmark {
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #22396B;
+  }
+  :global(.dark) .brand-wordmark {
+    color: #ffffff;
   }
 
   @media (min-width: 768px) {
-    .hero-stack-container {
-      width: 290px;
+    .hero-shell {
+      --stack-width: 290px;
+    }
+
+    .hero-grid {
+      align-items: center;
+      min-height: var(--stack-visible-height);
+    }
+
+    .hero-copy {
+      align-self: center;
+      padding-top: clamp(2rem, 5vw, 5rem);
+      padding-bottom: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    .hero-stack-column {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+    }
+
+    .hero-stack-column * {
+      pointer-events: auto;
     }
   }
 
   @media (min-width: 1024px) {
-    .hero-stack-container {
-      width: 320px;
+    .hero-shell {
+      --stack-width: 320px;
     }
+  }
+
+  /* Room for fanned background screenshots on left/right */
+  .hero-stack-stage {
+    width: calc(var(--stack-width) + var(--stack-spread) * 2);
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  /* Layout height = visible 70%; bottom 30% clipped and hidden */
+  .hero-stack-viewport {
+    position: relative;
+    width: 100%;
+    height: calc(var(--stack-width) * 19.5 / 9 * 0.7);
+    overflow: hidden;
+    /* Soft gradient fade so the fanned stack dissolves at the edges */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 6%,
+      #000 22%,
+      #000 80%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 6%,
+      #000 22%,
+      #000 80%,
+      transparent 100%
+    );
+  }
+
+  .hero-stack-glow {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    z-index: 0;
+    width: calc(var(--stack-width) * 0.8);
+    height: calc(var(--stack-width) * 19.5 / 9 * 0.7);
+    transform: translate(-50%, -50%);
+    border-radius: 9999px;
+    background: linear-gradient(
+      to top right,
+      rgb(49 176 153 / 0.4),
+      rgb(41 171 226 / 0.4),
+      rgb(34 57 107 / 0.3)
+    );
+    filter: blur(48px);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .hero-stack-container {
+    position: relative;
+    z-index: 1;
+    width: var(--stack-width);
+    margin-inline: auto;
+    aspect-ratio: 9 / 19.5;
   }
 </style>
