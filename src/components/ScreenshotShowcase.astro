@@ -39,7 +39,7 @@ const androidScreens = [
 
 <section
   id="capturas"
-  class="relative pt-4 md:pt-6 pb-28 md:pb-32 overflow-hidden"
+  class="relative pt-0 md:pt-6 pb-28 md:pb-32 overflow-hidden -mt-10 md:mt-0"
 >
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
     <!-- Slider container -->
@@ -261,6 +261,12 @@ const androidScreens = [
     overflow: hidden;
     padding: 3rem 0 1.5rem;
     perspective: 1400px;
+  }
+
+  @media (max-width: 767px) {
+    .slider-track-wrapper {
+      padding-top: 0.5rem;
+    }
   }
 
   .slider-track {
