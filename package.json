@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/partytown": "^2.1.7",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^5.16.15",
-    "@astrojs/partytown": "^2.1.4",
     "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
